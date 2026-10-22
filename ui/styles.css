@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #202124;
+    background-color: #f8fafd; /* Lighter background typical of Material 3 */
+    color: #1f1f1f;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -19,32 +19,31 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 8px 16px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #dadce0;
+    background-color: #f8fafd;
     height: 64px;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    width: 238px; /* Standard Google sidebar width minus padding */
+    width: 256px;
 }
 
 .menu-icon {
     padding: 12px;
     cursor: pointer;
-    color: #5f6368;
+    color: #444746;
     border-radius: 50%;
 }
 
 .menu-icon:hover {
-    background-color: #f1f3f4;
+    background-color: #e8eaed;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    margin-left: 4px;
+    margin-left: 8px;
     cursor: pointer;
 }
 
@@ -56,7 +55,8 @@ body {
 
 .logo-text {
     font-size: 22px;
-    color: #5f6368;
+    color: #444746;
+    font-weight: 400;
 }
 
 .header-middle {
@@ -68,12 +68,18 @@ body {
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #f1f3f4;
-    border-radius: 8px;
+    background-color: #e9eef6;
+    border-radius: 24px;
     padding: 0 16px;
     width: 100%;
     max-width: 720px;
     height: 48px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar:focus-within {
+    background-color: #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
 }
 
 .search-bar input {
@@ -83,18 +89,18 @@ body {
     font-size: 16px;
     width: 100%;
     padding: 12px;
-    color: #202124;
+    color: #1f1f1f;
 }
 
 .search-icon {
-    color: #5f6368;
+    color: #444746;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 16px;
-    color: #5f6368;
+    gap: 12px;
+    color: #444746;
 }
 
 .header-right .material-icons {
@@ -104,13 +110,13 @@ body {
 }
 
 .header-right .material-icons:hover {
-    background-color: #f1f3f4;
+    background-color: #e8eaed;
 }
 
 .profile-pic {
     width: 32px;
     height: 32px;
-    background-color: #1a73e8;
+    background-color: #0b57d0;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -118,6 +124,7 @@ body {
     justify-content: center;
     font-weight: 500;
     cursor: pointer;
+    margin-left: 12px;
 }
 
 /* Main Layout */
@@ -131,7 +138,7 @@ body {
 .sidebar {
     width: 256px;
     padding: 16px;
-    background-color: #ffffff;
+    background-color: #f8fafd;
 }
 
 .new-btn {
@@ -139,26 +146,26 @@ body {
     align-items: center;
     gap: 12px;
     background-color: #ffffff;
-    border: 1px solid #dadce0;
-    border-radius: 24px;
-    padding: 0 24px 0 16px;
-    height: 48px;
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    height: 56px;
     font-size: 14px;
     font-weight: 500;
-    color: #3c4043;
+    color: #1f1f1f;
     cursor: pointer;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-    margin-bottom: 24px;
-    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
 }
 
 .new-btn:hover {
-    background-color: #f8f9fa;
     box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    background-color: #f8f9fa;
 }
 
 .new-btn .material-icons {
-    color: #1a73e8; /* Google Plus color typical for new button */
+    color: #1a73e8;
 }
 
 .nav-links {
@@ -168,31 +175,31 @@ body {
 .nav-links li {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 12px 24px;
-    border-radius: 0 24px 24px 0;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 24px;
     cursor: pointer;
-    color: #3c4043;
+    color: #1f1f1f;
     font-size: 14px;
     font-weight: 500;
-    margin-right: 16px;
+    margin-bottom: 4px;
 }
 
 .nav-links li:hover {
-    background-color: #f1f3f4;
+    background-color: #e8eaed;
 }
 
 .nav-links li.active {
-    background-color: #e8f0fe;
-    color: #1a73e8;
+    background-color: #c2e7ff;
+    color: #001d35;
 }
 
 .nav-links li.active .material-icons {
-    color: #1a73e8;
+    color: #001d35;
 }
 
 .nav-links .material-icons {
-    color: #5f6368;
+    color: #444746;
     font-size: 20px;
 }
 
@@ -201,71 +208,70 @@ body {
     flex-grow: 1;
     padding: 24px;
     background-color: #ffffff;
-    border-radius: 16px;
-    margin: 16px;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    border-radius: 24px;
+    margin: 8px 16px 16px 0;
     overflow-y: auto;
 }
 
 .upload-area {
-    border: 2px dashed #dadce0;
-    border-radius: 8px;
+    border: 2px dashed #c4c7c5;
+    border-radius: 16px;
     padding: 48px;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #f8fafd;
     margin-bottom: 24px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .upload-area:hover {
-    background-color: #f1f3f4;
+    background-color: #e9eef6;
 }
 
 .upload-icon {
-    font-size: 64px;
-    color: #1a73e8;
+    font-size: 48px;
+    color: #0b57d0;
     margin-bottom: 16px;
 }
 
 .upload-area h2 {
-    color: #202124;
-    font-size: 20px;
+    color: #1f1f1f;
+    font-size: 22px;
     font-weight: 400;
     margin-bottom: 8px;
 }
 
 .upload-area p {
-    color: #5f6368;
+    color: #444746;
     font-size: 14px;
     margin-bottom: 24px;
 }
 
 .browse-btn {
-    background-color: #1a73e8;
+    background-color: #0b57d0;
     color: white;
     border: none;
     padding: 10px 24px;
-    border-radius: 4px;
+    border-radius: 24px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
 }
 
 .browse-btn:hover {
-    background-color: #1765cc;
+    background-color: #0842a0;
 }
 
 .conversion-settings {
-    border: 1px solid #dadce0;
-    border-radius: 8px;
+    background-color: #f0f4f8;
+    border-radius: 16px;
     padding: 24px;
 }
 
 .conversion-settings h3 {
     font-size: 16px;
     font-weight: 500;
-    color: #202124;
+    color: #1f1f1f;
     margin-bottom: 16px;
 }
 
@@ -278,29 +284,30 @@ body {
 
 .setting-group label {
     font-size: 14px;
-    color: #3c4043;
+    color: #444746;
 }
 
 .setting-group select {
-    padding: 8px 12px;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
+    padding: 10px 16px;
+    border: 1px solid #747775;
+    border-radius: 8px;
     font-size: 14px;
-    color: #202124;
+    color: #1f1f1f;
     outline: none;
+    background-color: #ffffff;
 }
 
 .convert-btn {
-    background-color: #1a73e8;
+    background-color: #0b57d0;
     color: white;
     border: none;
     padding: 10px 24px;
-    border-radius: 4px;
+    border-radius: 24px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
 }
 
 .convert-btn:hover {
-    background-color: #1765cc;
+    background-color: #0842a0;
 }
