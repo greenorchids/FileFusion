@@ -8,6 +8,16 @@
 
 # File Fusion
 
+[![Live site](https://img.shields.io/badge/live-ybelov27.github.io%2FFileFusion-1a73e8?style=flat&logo=googlechrome&logoColor=white)](https://ybelov27.github.io/FileFusion/)
+[![Deploy to GitHub Pages](https://github.com/ybelov27/FileFusion/actions/workflows/pages.yml/badge.svg)](https://github.com/ybelov27/FileFusion/actions/workflows/pages.yml)
+[![GitHub stars](https://img.shields.io/github/stars/ybelov27/FileFusion?style=flat&logo=github)](https://github.com/ybelov27/FileFusion/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/ybelov27/FileFusion?style=flat)](https://github.com/ybelov27/FileFusion/commits)
+[![Top language](https://img.shields.io/github/languages/top/ybelov27/FileFusion?style=flat)](https://github.com/ybelov27/FileFusion)
+![Private by design](https://img.shields.io/badge/privacy-100%25%20in--browser-1e8e3e?style=flat&logo=letsencrypt&logoColor=white)
+![Sign in with Google](https://img.shields.io/badge/auth-Google%20Identity%20Services-4285F4?style=flat&logo=google&logoColor=white)
+
+![File Fusion converter](ui/mockup.png)
+
 This repository contains the core logic for a modular file conversion system, named File Fusion.
 
 It also contains the web app in `ui/`: a landing page and a converter that runs entirely in the browser (images to PNG/JPG/WEBP/PDF, CSV/TSV/JSON to JSON/CSV/TSV/Markdown/HTML/YAML/XML, Markdown/HTML/text conversions). It is deployed to GitHub Pages at https://ybelov27.github.io/FileFusion/.
