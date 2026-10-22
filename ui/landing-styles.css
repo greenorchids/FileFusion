@@ -540,6 +540,31 @@ a {
     font-size: 14px;
 }
 
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.legal h2 {
+    font-size: 20px;
+    margin: 32px 0 8px;
+    color: #1f1f1f;
+}
+
+.legal p {
+    color: #3c4043;
+    line-height: 1.65;
+}
+
+.legal a {
+    color: #1a73e8;
+}
+
 .footer a {
     color: #1a73e8;
     text-decoration: none;
@@ -617,6 +642,10 @@ a {
 
     .final-cta h2 {
         font-size: 32px;
+    }
+
+    .footer-links {
+        justify-content: center;
     }
 
     .footer {

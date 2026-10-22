@@ -7,5 +7,5 @@
  * for local testing). Leave empty to hide Google sign-in.
  */
 window.FILEFUSION_CONFIG = {
-    googleClientId: '',
+    googleClientId: '966174453185-nfn9ns4ri5cej1i2epho6e9mljhqqpfu.apps.googleusercontent.com',
 };
