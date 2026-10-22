@@ -1,6 +1,14 @@
-# File Conversion System
+```text
+ _____ _ _        _____          _
+|  ___(_) | ___  |  ___|   _ ___(_) ___  _ __
+| |_  | | |/ _ \ | |_ | | | / __| |/ _ \| '_ \
+|  _| | | |  __/ |  _|| |_| \__ \ | (_) | | | |
+|_|   |_|_|\___| |_|   \__,_|___/_|\___/|_| |_|
+```
 
-This repository contains the core logic for a modular file conversion system.
+# File Fusion
+
+This repository contains the core logic for a modular file conversion system, named File Fusion.
 
 It also contains a static UI mockup to visualize the planned user interface.
 
