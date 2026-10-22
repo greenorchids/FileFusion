@@ -338,6 +338,7 @@ body {
 
 .gsi-slot {
     min-height: 32px;
+    overflow: hidden;
 }
 
 .account-menu {
