@@ -15,7 +15,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231a73e8' d='M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=20261022b">
+    <link rel="stylesheet" href="landing-styles.css?v=20261022c">
 </head>
 <body>
     <nav class="topnav">
@@ -43,7 +43,7 @@
             <div class="pill"><span class="material-icons">verified_user</span> 100% private · runs in your browser</div>
             <h1 class="hero-title">Convert any file<br>in <span class="accent">seconds</span>.</h1>
             <p class="hero-subtitle">
-                Images to PDF, PNG to JPG, CSV to JSON, Markdown to HTML and more.
+                Images to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to HTML and more.
                 Free forever, no sign-up, no watermarks, and your files never leave your device.
             </p>
 
@@ -66,7 +66,7 @@
                     <h2>Drop files here to start</h2>
                     <p>or <span class="link">choose files</span> · paste works too</p>
                     <div class="chips small">
-                        <span>PNG</span><span>JPG</span><span>WEBP</span><span>PDF</span><span>CSV</span><span>JSON</span><span>MD</span><span>HTML</span>
+                        <span>PNG</span><span>JPG</span><span>WEBP</span><span>PDF</span><span>ICO</span><span>MP3</span><span>WAV</span><span>CSV</span><span>JSON</span><span>XML</span><span>SQL</span><span>MD</span><span>HTML</span>
                     </div>
                 </div>
                 <input type="file" id="hero-input" multiple hidden>
@@ -76,7 +76,7 @@
     </header>
 
     <section class="stats">
-        <div><strong>20+</strong><span>conversion pairs</span></div>
+        <div><strong>100+</strong><span>conversion pairs</span></div>
         <div><strong>0 bytes</strong><span>uploaded to servers</span></div>
         <div><strong>$0</strong><span>free, forever</span></div>
         <div><strong>Batch</strong><span>convert many files at once</span></div>
@@ -98,6 +98,10 @@
             <a class="format-card" href="app.html?to=md"><span class="material-icons">code</span><strong>HTML → Markdown</strong><span>Clean up web content</span></a>
             <a class="format-card" href="app.html?to=pdf"><span class="material-icons">description</span><strong>Text → PDF</strong><span>Print-ready documents</span></a>
             <a class="format-card" href="app.html?to=txt"><span class="material-icons">notes</span><strong>HTML → Text</strong><span>Strip tags instantly</span></a>
+            <a class="format-card" href="app.html?to=wav"><span class="material-icons">audiotrack</span><strong>MP3 → WAV</strong><span>Also M4A, OGG, FLAC</span></a>
+            <a class="format-card" href="app.html?to=ico"><span class="material-icons">tab</span><strong>PNG → ICO</strong><span>Favicons for your site</span></a>
+            <a class="format-card" href="app.html?to=sql"><span class="material-icons">storage</span><strong>CSV → SQL</strong><span>CREATE TABLE + INSERTs</span></a>
+            <a class="format-card" href="app.html?to=json"><span class="material-icons">account_tree</span><strong>XML → JSON</strong><span>Also JSON Lines</span></a>
         </div>
     </section>
 
@@ -109,7 +113,7 @@
             <div class="step"><span class="step-num">3</span><h3>Download</h3><p>Conversion happens instantly on your device. No upload, no queue, no email.</p></div>
         </div>
         <div class="hero-image-wrapper">
-            <img src="converter-screenshot.png?v=20261022b" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
+            <img src="converter-screenshot.png?v=20261022c" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
         </div>
     </section>
 
@@ -128,7 +132,7 @@
             <details open><summary>Is File Fusion really free?</summary><p>Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub.</p></details>
             <details><summary>Are my files uploaded anywhere?</summary><p>No. Every conversion runs in your browser on your own device. Your files are never sent to a server.</p></details>
             <details><summary>Do I need an account?</summary><p>No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device.</p></details>
-            <details><summary>Which formats are supported?</summary><p>Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF) to PNG, JPG, WEBP or PDF; CSV, TSV and JSON to JSON, CSV, TSV, Markdown, HTML, YAML or XML; Markdown to HTML or text; HTML to text or Markdown; and plain text to HTML or PDF.</p></details>
+            <details><summary>Which formats are supported?</summary><p>Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP, PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS, FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV, JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text or PDF; HTML to text, Markdown or PDF; and plain text to HTML, Markdown or PDF.</p></details>
             <details><summary>Can I convert many files at once?</summary><p>Yes. Drop in as many files as you like and use "Convert all" to process the whole batch.</p></details>
         </div>
     </section>
@@ -150,9 +154,9 @@
         </span>
     </footer>
 
-    <script src="config.js?v=20261022b"></script>
-    <script src="auth.js?v=20261022b"></script>
-    <script src="handoff.js?v=20261022b"></script>
-    <script src="landing.js?v=20261022b"></script>
+    <script src="config.js?v=20261022c"></script>
+    <script src="auth.js?v=20261022c"></script>
+    <script src="handoff.js?v=20261022c"></script>
+    <script src="landing.js?v=20261022c"></script>
 </body>
 </html>
