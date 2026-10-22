@@ -3,3 +3,18 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+
+# Secrets and local config: never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+client_secret*.json
+credentials*.json
+service-account*.json
+
+# Tooling
+node_modules/
+.DS_Store

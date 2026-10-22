@@ -1,6 +1,6 @@
 // Renders ui/app.html with sample files and saves it as the landing-page mockup.
 // Needs Google Chrome and `npm i playwright-core`. Serve ui/ first, then:
-//   node tools/mockup.mjs http://localhost:8000 ui/mockup.png
+//   node tools/mockup.mjs http://localhost:8000 ui/converter-screenshot.png
 import { chromium } from 'playwright-core';
 
 const [base, out] = process.argv.slice(2);
