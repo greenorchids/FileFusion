@@ -12,6 +12,7 @@
 [![Deploy to GitHub Pages](https://github.com/ybelov27/FileFusion/actions/workflows/pages.yml/badge.svg)](https://github.com/ybelov27/FileFusion/actions/workflows/pages.yml)
 [![GitHub stars](https://img.shields.io/github/stars/ybelov27/FileFusion?style=flat&logo=github)](https://github.com/ybelov27/FileFusion/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/ybelov27/FileFusion?style=flat)](https://github.com/ybelov27/FileFusion/commits)
+[![License: MIT](https://img.shields.io/github/license/ybelov27/FileFusion?style=flat)](LICENSE)
 [![Top language](https://img.shields.io/github/languages/top/ybelov27/FileFusion?style=flat)](https://github.com/ybelov27/FileFusion)
 ![Private by design](https://img.shields.io/badge/privacy-100%25%20in--browser-1e8e3e?style=flat&logo=letsencrypt&logoColor=white)
 ![Sign in with Google](https://img.shields.io/badge/auth-Google%20Identity%20Services-4285F4?style=flat&logo=google&logoColor=white)
@@ -61,3 +62,7 @@ To work on the core system or run the unit tests:
    ```bash
    pytest tests/
    ```
+
+## License
+
+File Fusion is released under the [MIT License](LICENSE).
