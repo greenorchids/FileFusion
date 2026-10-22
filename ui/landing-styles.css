@@ -637,6 +637,12 @@ a {
 
     .nav-actions {
         margin-left: auto;
+        gap: 8px;
+    }
+
+    .logo-text,
+    .btn-primary.small {
+        white-space: nowrap;
     }
 
     .hero {
@@ -714,5 +720,19 @@ a {
     .gh-star span:not(.gh-count),
     .nav-user {
         display: none;
+    }
+
+    .logo-icon {
+        font-size: 26px;
+        margin-right: 6px;
+    }
+
+    .logo-text {
+        font-size: 19px;
+    }
+
+    .btn-primary.small {
+        padding: 8px 14px;
+        font-size: 13px;
     }
 }

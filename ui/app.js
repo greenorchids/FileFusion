@@ -190,6 +190,7 @@
         $('view-history').hidden = name !== 'history';
         document.querySelectorAll('.nav-links li').forEach((li) => li.classList.toggle('active', li.dataset.view === name));
         document.body.classList.remove('sidebar-open');
+        $('scrim').hidden = true;
         if (name === 'history') renderHistory();
     }
 
@@ -220,7 +221,12 @@
     $('clear-queue').addEventListener('click', () => { queue.slice().forEach(resetItem); queue.length = 0; renderQueue(); });
     $('clear-history').addEventListener('click', () => { try { localStorage.removeItem(historyKey()); } catch { /* ignore */ } renderHistory(); });
     $('search').addEventListener('input', (e) => { searchTerm = e.target.value.trim().toLowerCase(); renderQueue(); renderHistory(); });
-    $('menu-toggle').addEventListener('click', () => document.body.classList.toggle('sidebar-open'));
+    function setSidebar(open) {
+        document.body.classList.toggle('sidebar-open', open);
+        $('scrim').hidden = !open;
+    }
+    $('menu-toggle').addEventListener('click', () => setSidebar(!document.body.classList.contains('sidebar-open')));
+    $('scrim').addEventListener('click', () => setSidebar(false));
     document.querySelectorAll('.nav-links li').forEach((li) => li.addEventListener('click', () => showView(li.dataset.view)));
 
     /* ---------- Account ---------- */
@@ -248,6 +254,7 @@
             $('account-avatar').hidden = !user.picture;
             $('account-name').textContent = user.name;
             $('account-email').textContent = user.email;
+            $('account-email').title = user.email;
         }
         renderQueue();
         renderHistory();
@@ -259,7 +266,8 @@
         if (user && !wasSignedIn) toast(`Signed in as ${user.givenName || user.name}.`);
         wasSignedIn = Boolean(user);
     });
-    window.FFAuth.renderButton($('gsi-header'), { size: 'medium', text: 'signin' });
+    const narrow = window.matchMedia('(max-width: 600px)').matches;
+    window.FFAuth.renderButton($('gsi-header'), narrow ? { type: 'icon', shape: 'circle', size: 'medium' } : { size: 'medium', text: 'signin' });
     window.FFAuth.renderButton($('gsi-nudge'), { text: 'continue_with' });
 
     /* ---------- Files handed over from the landing page ---------- */
