@@ -3,36 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Fusion - Fast and Secure</title>
+    <title>File Fusion · Free, private file converter</title>
+    <meta name="description" content="Convert images to PDF, PNG to JPG, CSV to JSON, Markdown to HTML and more. Free, open source, and private: your files never leave your device.">
+    <meta property="og:title" content="File Fusion · Free, private file converter">
+    <meta property="og:description" content="Convert files in seconds, right in your browser. No uploads, no sign-up, no watermarks.">
+    <meta property="og:image" content="mockup.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231a73e8' d='M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="landing-styles.css">
 </head>
 <body>
-    <div class="landing-container">
+    <nav class="topnav">
+        <a class="logo" href="./">
+            <span class="material-icons logo-icon">folder_shared</span>
+            <span class="logo-text">File Fusion</span>
+        </a>
+        <div class="nav-links">
+            <a href="#formats">Formats</a>
+            <a href="#how">How it works</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <div class="nav-actions">
+            <div id="gsi-nav" class="gsi-slot" hidden></div>
+            <span class="nav-user" id="nav-user" hidden></span>
+            <a href="app.html" class="btn-primary small">Open converter</a>
+        </div>
+    </nav>
+
+    <header class="hero">
         <div class="content-left">
-            <div class="logo">
-                <span class="material-icons logo-icon" style="color: #1a73e8; font-size: 36px; margin-right: 12px;">folder_shared</span>
-                <span class="logo-text">File Fusion</span>
-            </div>
-
-            <h1 class="hero-title">Convert your files<br>with ease</h1>
-
+            <div class="pill"><span class="material-icons">verified_user</span> 100% private · runs in your browser</div>
+            <h1 class="hero-title">Convert any file<br>in <span class="accent">seconds</span>.</h1>
             <p class="hero-subtitle">
-                Fast, secure file conversion for all your needs. Seamlessly transform documents, data, and more directly in your browser.
+                Images to PDF, PNG to JPG, CSV to JSON, Markdown to HTML and more.
+                Free forever, no sign-up, no watermarks, and your files never leave your device.
             </p>
 
             <div class="cta-buttons">
-                <a href="app.html" class="btn-primary">Get started</a>
-                <a href="#" class="btn-secondary">Learn more</a>
+                <a href="app.html" class="btn-primary">Convert a file, it's free <span class="material-icons">arrow_forward</span></a>
+                <div id="gsi-hero" class="gsi-slot" hidden></div>
             </div>
+
+            <ul class="trust">
+                <li><span class="material-icons">check_circle</span> No account needed</li>
+                <li><span class="material-icons">check_circle</span> No upload limits or queues</li>
+                <li><span class="material-icons">check_circle</span> Open source</li>
+            </ul>
         </div>
 
         <div class="content-right">
-            <div class="hero-image-wrapper">
-                <img src="mockup.png" alt="App UI Mockup" class="hero-image">
+            <div class="drop-card" id="hero-drop" tabindex="0" role="button" aria-label="Choose files to convert">
+                <div class="drop-inner">
+                    <span class="material-icons drop-icon">cloud_upload</span>
+                    <h2>Drop files here to start</h2>
+                    <p>or <span class="link">choose files</span> · paste works too</p>
+                    <div class="chips small">
+                        <span>PNG</span><span>JPG</span><span>WEBP</span><span>PDF</span><span>CSV</span><span>JSON</span><span>MD</span><span>HTML</span>
+                    </div>
+                </div>
+                <input type="file" id="hero-input" multiple hidden>
             </div>
+            <p class="drop-caption"><span class="material-icons">lock</span> Processed locally. Nothing is uploaded to any server.</p>
         </div>
-    </div>
+    </header>
+
+    <section class="stats">
+        <div><strong>20+</strong><span>conversion pairs</span></div>
+        <div><strong>0 bytes</strong><span>uploaded to servers</span></div>
+        <div><strong>$0</strong><span>free, forever</span></div>
+        <div><strong>Batch</strong><span>convert many files at once</span></div>
+    </section>
+
+    <section class="section" id="formats">
+        <h2 class="section-title">Popular conversions</h2>
+        <p class="section-sub">Pick one to jump straight in, or drop any supported file into the converter.</p>
+        <div class="format-grid">
+            <a class="format-card" href="app.html?to=pdf"><span class="material-icons">picture_as_pdf</span><strong>Image → PDF</strong><span>JPG, PNG, WEBP to PDF</span></a>
+            <a class="format-card" href="app.html?to=jpg"><span class="material-icons">image</span><strong>PNG → JPG</strong><span>Smaller files for sharing</span></a>
+            <a class="format-card" href="app.html?to=png"><span class="material-icons">photo</span><strong>WEBP → PNG</strong><span>Also JPG, GIF, SVG, BMP</span></a>
+            <a class="format-card" href="app.html?to=webp"><span class="material-icons">bolt</span><strong>JPG → WEBP</strong><span>Faster websites</span></a>
+            <a class="format-card" href="app.html?to=json"><span class="material-icons">data_object</span><strong>CSV → JSON</strong><span>Spreadsheets to APIs</span></a>
+            <a class="format-card" href="app.html?to=csv"><span class="material-icons">table_chart</span><strong>JSON → CSV</strong><span>Open in Excel or Sheets</span></a>
+            <a class="format-card" href="app.html?to=md"><span class="material-icons">grid_on</span><strong>CSV → Markdown</strong><span>Tables for READMEs</span></a>
+            <a class="format-card" href="app.html?to=yaml"><span class="material-icons">settings_ethernet</span><strong>JSON → YAML / XML</strong><span>Config &amp; data formats</span></a>
+            <a class="format-card" href="app.html?to=html"><span class="material-icons">article</span><strong>Markdown → HTML</strong><span>Ready-to-publish pages</span></a>
+            <a class="format-card" href="app.html?to=md"><span class="material-icons">code</span><strong>HTML → Markdown</strong><span>Clean up web content</span></a>
+            <a class="format-card" href="app.html?to=pdf"><span class="material-icons">description</span><strong>Text → PDF</strong><span>Print-ready documents</span></a>
+            <a class="format-card" href="app.html?to=txt"><span class="material-icons">notes</span><strong>HTML → Text</strong><span>Strip tags instantly</span></a>
+        </div>
+    </section>
+
+    <section class="section alt" id="how">
+        <h2 class="section-title">Three steps. No waiting.</h2>
+        <div class="steps">
+            <div class="step"><span class="step-num">1</span><h3>Drop your files</h3><p>Drag in one file or a whole batch. Paste images straight from your clipboard.</p></div>
+            <div class="step"><span class="step-num">2</span><h3>Pick a format</h3><p>Choose a target per file, or convert everything to the same format at once.</p></div>
+            <div class="step"><span class="step-num">3</span><h3>Download</h3><p>Conversion happens instantly on your device. No upload, no queue, no email.</p></div>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="mockup.png" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
+        </div>
+    </section>
+
+    <section class="section" id="why">
+        <h2 class="section-title">Why people switch to File Fusion</h2>
+        <div class="benefits">
+            <div class="benefit"><span class="material-icons">shield</span><h3>Private by design</h3><p>Other converters upload your files to their servers. File Fusion converts them in your browser, so sensitive documents stay with you.</p></div>
+            <div class="benefit"><span class="material-icons">speed</span><h3>Instant results</h3><p>No upload or download wait. Conversions finish as fast as your device can run them.</p></div>
+            <div class="benefit"><span class="material-icons">money_off</span><h3>Actually free</h3><p>No daily limits, no watermarks, no "pro" upsell. The code is open source on GitHub.</p></div>
+        </div>
+    </section>
+
+    <section class="section alt" id="faq">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="faq">
+            <details open><summary>Is File Fusion really free?</summary><p>Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub.</p></details>
+            <details><summary>Are my files uploaded anywhere?</summary><p>No. Every conversion runs in your browser on your own device. Your files are never sent to a server.</p></details>
+            <details><summary>Do I need an account?</summary><p>No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device.</p></details>
+            <details><summary>Which formats are supported?</summary><p>Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF) to PNG, JPG, WEBP or PDF; CSV, TSV and JSON to JSON, CSV, TSV, Markdown, HTML, YAML or XML; Markdown to HTML or text; HTML to text or Markdown; and plain text to HTML or PDF.</p></details>
+            <details><summary>Can I convert many files at once?</summary><p>Yes. Drop in as many files as you like and use "Convert all" to process the whole batch.</p></details>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>Ready to convert?</h2>
+        <p>It takes less time than reading this sentence.</p>
+        <a href="app.html" class="btn-primary light">Start converting, free <span class="material-icons">arrow_forward</span></a>
+    </section>
+
+    <footer class="footer">
+        <span>© File Fusion · Open source file conversion</span>
+        <a href="https://github.com/ybelov27/FileFusion" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="handoff.js"></script>
+    <script src="landing.js"></script>
 </body>
 </html>

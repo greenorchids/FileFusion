@@ -10,11 +10,11 @@
 
 This repository contains the core logic for a modular file conversion system, named File Fusion.
 
-It also contains a static UI mockup to visualize the planned user interface.
+It also contains the web app in `ui/`: a landing page and a converter that runs entirely in the browser (images to PNG/JPG/WEBP/PDF, CSV/TSV/JSON to JSON/CSV/TSV/Markdown/HTML/YAML/XML, Markdown/HTML/text conversions). It is deployed to GitHub Pages at https://ybelov27.github.io/FileFusion/.
 
-## UI Mockup
+## Web App
 
-To view the UI mockup locally, you can use Python's built-in HTTP server.
+To run the web app locally, you can use Python's built-in HTTP server.
 
 1. Navigate to the `ui` directory:
    ```bash
@@ -29,6 +29,14 @@ To view the UI mockup locally, you can use Python's built-in HTTP server.
 3. Open your web browser and navigate to:
    * Landing Page: `http://localhost:8000/`
    * App UI: `http://localhost:8000/app.html`
+
+### Google sign-in
+
+Sign-in uses Google Identity Services and is optional; it stays hidden until a client ID is configured.
+
+1. In the [Google Cloud console](https://console.cloud.google.com/apis/credentials), create an OAuth client ID of type **Web application**.
+2. Under **Authorized JavaScript origins**, add `https://ybelov27.github.io` and `http://localhost:8000`.
+3. Paste the client ID into `ui/config.js` as `googleClientId`.
 
 ## Core System Development
 
