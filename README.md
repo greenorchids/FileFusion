@@ -25,7 +25,7 @@
 
 This repository contains the core logic for a modular file conversion system, named File Fusion.
 
-It also contains the web app in `ui/`: a landing page and a converter that runs entirely in the browser (images to PNG/JPG/WEBP/PDF, CSV/TSV/JSON to JSON/CSV/TSV/Markdown/HTML/YAML/XML, Markdown/HTML/text conversions). It is deployed to GitHub Pages at https://ybelov27.github.io/FileFusion/.
+It also contains the web app in `ui/`: a landing page and a converter that runs entirely in the browser (images to PNG/JPG/WEBP/PDF/BMP/ICO/Base64, audio to WAV, CSV/TSV/JSON/JSON Lines/XML to JSON/CSV/TSV/JSON Lines/Markdown/HTML/YAML/XML/SQL, and Markdown/HTML/text to HTML/Markdown/text/PDF). It is deployed to GitHub Pages at https://ybelov27.github.io/FileFusion/.
 
 ## Web App
 

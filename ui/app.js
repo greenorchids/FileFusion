@@ -16,7 +16,7 @@
     }
 
     function iconFor(file) {
-        return { image: 'image', data: 'table_chart', markdown: 'article', html: 'code', text: 'description' }[kindOf(file)] || 'insert_drive_file';
+        return { image: 'image', data: 'table_chart', markdown: 'article', html: 'code', text: 'description', audio: 'audiotrack' }[kindOf(file)] || 'insert_drive_file';
     }
 
     let toastTimer;

@@ -4,14 +4,20 @@
  */
 (function () {
     const IMAGE_IN = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp', 'svg', 'avif', 'ico'];
-    const DATA_IN = ['csv', 'tsv', 'json'];
+    const DATA_IN = ['csv', 'tsv', 'json', 'jsonl', 'ndjson', 'xml'];
+    const AUDIO_IN = ['mp3', 'wav', 'ogg', 'oga', 'm4a', 'aac', 'flac', 'opus'];
 
     const FORMATS = {
         png:  { label: 'PNG',  mime: 'image/png' },
         jpg:  { label: 'JPG',  mime: 'image/jpeg' },
         webp: { label: 'WEBP', mime: 'image/webp' },
+        bmp:  { label: 'BMP',  mime: 'image/bmp' },
+        ico:  { label: 'ICO (favicon)', mime: 'image/x-icon' },
+        datauri: { label: 'Base64 data URI', mime: 'text/plain', ext: 'txt' },
         pdf:  { label: 'PDF',  mime: 'application/pdf' },
         json: { label: 'JSON', mime: 'application/json' },
+        jsonl: { label: 'JSON Lines', mime: 'application/jsonl' },
+        sql:  { label: 'SQL inserts', mime: 'application/sql' },
         csv:  { label: 'CSV',  mime: 'text/csv' },
         tsv:  { label: 'TSV',  mime: 'text/tab-separated-values' },
         md:   { label: 'Markdown', mime: 'text/markdown' },
@@ -19,6 +25,7 @@
         yaml: { label: 'YAML', mime: 'application/yaml' },
         xml:  { label: 'XML',  mime: 'application/xml' },
         txt:  { label: 'Text', mime: 'text/plain' },
+        wav:  { label: 'WAV',  mime: 'audio/wav' },
     };
 
     function extOf(name) {
@@ -30,6 +37,7 @@
         const ext = extOf(file.name);
         if (IMAGE_IN.includes(ext) || (file.type || '').startsWith('image/')) return 'image';
         if (DATA_IN.includes(ext)) return 'data';
+        if (AUDIO_IN.includes(ext) || (file.type || '').startsWith('audio/')) return 'audio';
         if (ext === 'md' || ext === 'markdown') return 'markdown';
         if (ext === 'html' || ext === 'htm') return 'html';
         if (ext === 'txt') return 'text';
@@ -38,17 +46,18 @@
 
     function normalizedExt(file) {
         const ext = extOf(file.name);
-        return ext === 'jpeg' ? 'jpg' : ext === 'markdown' ? 'md' : ext === 'htm' ? 'html' : ext;
+        return ext === 'jpeg' ? 'jpg' : ext === 'markdown' ? 'md' : ext === 'htm' ? 'html' : ext === 'ndjson' ? 'jsonl' : ext;
     }
 
     function targetsFor(file) {
         const own = normalizedExt(file);
         const byKind = {
-            image: ['png', 'jpg', 'webp', 'pdf'],
-            data: ['json', 'csv', 'tsv', 'md', 'html', 'yaml', 'xml'],
-            markdown: ['html', 'txt'],
-            html: ['txt', 'md'],
+            image: ['png', 'jpg', 'webp', 'pdf', 'bmp', 'ico', 'datauri'],
+            data: ['json', 'csv', 'tsv', 'md', 'html', 'yaml', 'xml', 'jsonl', 'sql'],
+            markdown: ['html', 'txt', 'pdf'],
+            html: ['txt', 'md', 'pdf'],
             text: ['html', 'md', 'pdf'],
+            audio: ['wav'],
         }[kindOf(file)] || [];
         return byKind.filter((t) => t !== own);
     }
@@ -98,6 +107,35 @@
         const headers = [];
         records.forEach((r) => Object.keys(r).forEach((k) => { if (!headers.includes(k)) headers.push(k); }));
         return { headers, records };
+    }
+
+    function tableFromRecords(records) {
+        const headers = [];
+        records.forEach((r) => Object.keys(r).forEach((k) => { if (!headers.includes(k)) headers.push(k); }));
+        return { headers, records };
+    }
+
+    function parseJsonLines(text) {
+        const records = text.split(/\r?\n/).filter((l) => l.trim()).map((l, i) => {
+            try { return JSON.parse(l); } catch (e) { throw new Error(`line ${i + 1}: ${e.message}`); }
+        }).map((r) => (r && typeof r === 'object' && !Array.isArray(r) ? r : { value: r }));
+        return tableFromRecords(records);
+    }
+
+    // Treats the root's child elements as rows and their children (or attributes) as fields.
+    function parseXmlTable(text) {
+        const doc = new DOMParser().parseFromString(text, 'application/xml');
+        const err = doc.querySelector('parsererror');
+        if (err) throw new Error(err.textContent.split('\n')[0] || 'invalid XML');
+        const records = Array.from(doc.documentElement.children).map((row) => {
+            const o = {};
+            Array.from(row.attributes).forEach((a) => { o[a.name] = a.value; });
+            const kids = Array.from(row.children);
+            if (kids.length) kids.forEach((k) => { o[k.tagName] = k.children.length ? k.innerHTML.trim() : k.textContent; });
+            else if (!row.attributes.length) o[row.tagName] = row.textContent;
+            return o;
+        });
+        return tableFromRecords(records);
     }
 
     const cell = (v) => (v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v));
@@ -161,6 +199,25 @@
         const escXml = (s) => escHtml(s).replace(/'/g, '&apos;');
         const rows = records.map((r) => `  <row>\n${headers.map((h) => `    <${tag(h)}>${escXml(cell(r[h]))}</${tag(h)}>`).join('\n')}\n  </row>`);
         return `<?xml version="1.0" encoding="UTF-8"?>\n<rows>\n${rows.join('\n')}\n</rows>\n`;
+    }
+
+    function toJsonLines({ records }) {
+        return records.map((r) => JSON.stringify(r)).join('\n') + '\n';
+    }
+
+    function toSql({ headers, records }, name) {
+        const ident = (s) => `"${String(s).replace(/"/g, '""')}"`;
+        const table = ident(name.replace(/[^\w]+/g, '_').replace(/^_+|_+$/g, '') || 'data');
+        const numeric = headers.map((h) => records.length > 0 && records.every((r) => r[h] == null || r[h] === '' || /^-?\d+(\.\d+)?$/.test(String(r[h]))));
+        const value = (v, i) => {
+            if (v == null || v === '') return 'NULL';
+            if (numeric[i]) return String(v);
+            if (typeof v === 'boolean') return v ? 'TRUE' : 'FALSE';
+            return `'${cell(v).replace(/'/g, "''")}'`;
+        };
+        const cols = headers.map(ident).join(', ');
+        const create = `CREATE TABLE ${table} (\n${headers.map((h, i) => `  ${ident(h)} ${numeric[i] ? 'NUMERIC' : 'TEXT'}`).join(',\n')}\n);\n\n`;
+        return create + records.map((r) => `INSERT INTO ${table} (${cols}) VALUES (${headers.map((h, i) => value(r[h], i)).join(', ')});`).join('\n') + '\n';
     }
 
     /* ---------- Markdown / HTML / text ---------- */
@@ -281,6 +338,106 @@
         return { blob, width: w, height: h };
     }
 
+    async function drawToCanvas(file, maxSize) {
+        const img = await loadImage(file);
+        let w = img.naturalWidth || 1024, h = img.naturalHeight || 1024;
+        if (maxSize && Math.max(w, h) > maxSize) {
+            const k = maxSize / Math.max(w, h);
+            w = Math.max(1, Math.round(w * k)); h = Math.max(1, Math.round(h * k));
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        return canvas;
+    }
+
+    // 24-bit BMP on a white background (BMP has no reliable alpha support).
+    async function imageToBmp(file) {
+        const src = await drawToCanvas(file);
+        const { width: w, height: h } = src;
+        const flat = document.createElement('canvas');
+        flat.width = w; flat.height = h;
+        const ctx = flat.getContext('2d');
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(src, 0, 0);
+        const px = ctx.getImageData(0, 0, w, h).data;
+        const rowSize = Math.ceil((w * 3) / 4) * 4;
+        const buf = new ArrayBuffer(54 + rowSize * h);
+        const v = new DataView(buf);
+        v.setUint16(0, 0x4d42, true); v.setUint32(2, buf.byteLength, true); v.setUint32(10, 54, true);
+        v.setUint32(14, 40, true); v.setInt32(18, w, true); v.setInt32(22, h, true);
+        v.setUint16(26, 1, true); v.setUint16(28, 24, true); v.setUint32(34, rowSize * h, true);
+        v.setInt32(38, 2835, true); v.setInt32(42, 2835, true);
+        const out = new Uint8Array(buf);
+        for (let y = 0; y < h; y++) {
+            let o = 54 + (h - 1 - y) * rowSize;
+            for (let x = 0; x < w; x++) {
+                const i = (y * w + x) * 4;
+                out[o++] = px[i + 2]; out[o++] = px[i + 1]; out[o++] = px[i];
+            }
+        }
+        return new Blob([buf], { type: 'image/bmp' });
+    }
+
+    // ICO containing one PNG image, centered in a square of up to 256px.
+    async function imageToIco(file) {
+        const src = await drawToCanvas(file, 256);
+        const size = Math.max(src.width, src.height);
+        const sq = document.createElement('canvas');
+        sq.width = size; sq.height = size;
+        sq.getContext('2d').drawImage(src, (size - src.width) / 2, (size - src.height) / 2);
+        const png = new Uint8Array(await (await canvasToBlob(sq, 'image/png')).arrayBuffer());
+        const head = new DataView(new ArrayBuffer(22));
+        head.setUint16(2, 1, true); head.setUint16(4, 1, true);
+        head.setUint8(6, size >= 256 ? 0 : size); head.setUint8(7, size >= 256 ? 0 : size);
+        head.setUint16(10, 1, true); head.setUint16(12, 32, true);
+        head.setUint32(14, png.length, true); head.setUint32(18, 22, true);
+        return new Blob([head.buffer, png], { type: 'image/x-icon' });
+    }
+
+    function fileToDataUri(file) {
+        return new Promise((resolve, reject) => {
+            const r = new FileReader();
+            r.onload = () => resolve(r.result);
+            r.onerror = () => reject(new Error('Could not read the file.'));
+            r.readAsDataURL(file);
+        });
+    }
+
+    /* ---------- Audio ---------- */
+
+    async function audioToWav(file) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) throw new Error('Your browser cannot decode audio.');
+        const ctx = new Ctx();
+        let audio;
+        try {
+            audio = await ctx.decodeAudioData(await file.arrayBuffer());
+        } catch {
+            throw new Error('This audio format could not be decoded by your browser.');
+        } finally {
+            ctx.close();
+        }
+        const ch = audio.numberOfChannels, len = audio.length, rate = audio.sampleRate;
+        const buf = new ArrayBuffer(44 + len * ch * 2);
+        const v = new DataView(buf);
+        const str = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+        str(0, 'RIFF'); v.setUint32(4, 36 + len * ch * 2, true); str(8, 'WAVE');
+        str(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+        v.setUint32(24, rate, true); v.setUint32(28, rate * ch * 2, true); v.setUint16(32, ch * 2, true); v.setUint16(34, 16, true);
+        str(36, 'data'); v.setUint32(40, len * ch * 2, true);
+        const chans = Array.from({ length: ch }, (_, c) => audio.getChannelData(c));
+        let o = 44;
+        for (let i = 0; i < len; i++) {
+            for (let c = 0; c < ch; c++) {
+                const smp = Math.max(-1, Math.min(1, chans[c][i]));
+                v.setInt16(o, smp < 0 ? smp * 0x8000 : smp * 0x7fff, true);
+                o += 2;
+            }
+        }
+        return new Blob([buf], { type: 'audio/wav' });
+    }
+
     // Assemble a PDF from already-encoded JPEG pages, one image per page.
     function buildPdf(pages) {
         const enc = new TextEncoder();
@@ -359,14 +516,19 @@
     async function convert(file, target) {
         const kind = kindOf(file);
         const base = file.name.replace(/\.[^.]+$/, '') || 'converted';
-        const name = `${base}.${target}`;
+        const name = `${base}.${FORMATS[target].ext || target}`;
         const type = FORMATS[target].mime;
         const text = (s) => ({ blob: new Blob([s], { type: `${type};charset=utf-8` }), name });
 
         if (!targetsFor(file).includes(target)) throw new Error(`Can't convert this file to ${FORMATS[target].label}.`);
 
+        if (kind === 'audio') return { blob: await audioToWav(file), name };
+
         if (kind === 'image') {
             if (target === 'pdf') return { blob: await imageToPdf(file), name };
+            if (target === 'bmp') return { blob: await imageToBmp(file), name };
+            if (target === 'ico') return { blob: await imageToIco(file), name };
+            if (target === 'datauri') return text(await fileToDataUri(file) + '\n');
             return { blob: (await rasterize(file, type)).blob, name };
         }
 
@@ -375,7 +537,11 @@
             const ext = normalizedExt(file);
             let table;
             try {
-                table = ext === 'json' ? parseJsonTable(src) : parseDelimited(src.replace(/^﻿/, ''), ext === 'tsv' ? '\t' : ',');
+                const clean = src.replace(/^\uFEFF/, '');
+                table = ext === 'json' ? parseJsonTable(clean)
+                    : ext === 'jsonl' ? parseJsonLines(clean)
+                    : ext === 'xml' ? parseXmlTable(clean)
+                    : parseDelimited(clean, ext === 'tsv' ? '\t' : ',');
             } catch (e) {
                 throw new Error(`Couldn't read ${ext.toUpperCase()}: ${e.message}`);
             }
@@ -387,15 +553,19 @@
                 case 'html': return text(toHtmlTable(table, base));
                 case 'yaml': return text(toYaml(table));
                 case 'xml': return text(toXml(table));
+                case 'jsonl': return text(toJsonLines(table));
+                case 'sql': return text(toSql(table, base));
             }
         }
         if (kind === 'markdown') {
             if (target === 'html') return text(htmlDocument(base, markdownToHtml(src)));
             if (target === 'txt') return text(htmlToText(markdownToHtml(src)));
+            if (target === 'pdf') return { blob: await textToPdf(htmlToText(markdownToHtml(src))), name };
         }
         if (kind === 'html') {
             if (target === 'txt') return text(htmlToText(src));
             if (target === 'md') return text(htmlToMarkdown(src));
+            if (target === 'pdf') return { blob: await textToPdf(htmlToText(src)), name };
         }
         if (kind === 'text') {
             if (target === 'html') return text(htmlDocument(base, `<pre>${escHtml(src)}</pre>`));

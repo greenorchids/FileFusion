@@ -146,12 +146,15 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
+    display: flex;
+    flex-direction: column;
     width: 256px;
     padding: 16px;
     background-color: #f8fafd;
 }
 
 .new-btn {
+    align-self: flex-start;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -400,7 +403,7 @@ body {
 .sidebar-note {
     display: flex;
     gap: 10px;
-    margin-top: 24px;
+    margin-top: auto;
     padding: 12px 16px;
     font-size: 12px;
     line-height: 1.5;
