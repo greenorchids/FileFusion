@@ -91,6 +91,60 @@ a {
     border-radius: 50%;
 }
 
+/* GitHub */
+.gh-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #dadce0;
+    border-radius: 18px;
+    color: #24292f;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.gh-star:hover {
+    background: #f6f8fa;
+}
+
+.gh-count {
+    padding-left: 8px;
+    border-left: 1px solid #dadce0;
+}
+
+.trust a {
+    color: inherit;
+}
+
+.final-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
 /* Buttons */
 .btn-primary {
     display: inline-flex;
@@ -657,6 +711,7 @@ a {
 }
 
 @media (max-width: 420px) {
+    .gh-star span:not(.gh-count),
     .nav-user {
         display: none;
     }

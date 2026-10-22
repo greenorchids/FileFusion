@@ -42,6 +42,17 @@
             navUser.append(`Hi, ${user.givenName || user.name}`);
         }
     });
+    fetch('https://api.github.com/repos/ybelov27/FileFusion')
+        .then((r) => (r.ok ? r.json() : null))
+        .then((repo) => {
+            if (!repo || !repo.stargazers_count) return;
+            document.querySelectorAll('[data-gh-stars]').forEach((el) => {
+                el.textContent = repo.stargazers_count.toLocaleString();
+                el.hidden = false;
+            });
+        })
+        .catch(() => { /* count is optional */ });
+
     window.FFAuth.renderButton(document.getElementById('gsi-nav'), { size: 'medium', text: 'signin' });
     window.FFAuth.renderButton(document.getElementById('gsi-hero'), { size: 'large', text: 'continue_with' });
     window.FFAuth.promptOneTap();
