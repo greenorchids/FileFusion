@@ -27,8 +27,8 @@ To view the UI mockup locally, you can use Python's built-in HTTP server.
    ```
 
 3. Open your web browser and navigate to:
-   * Landing Page: `http://localhost:8000/landing.html`
-   * App UI: `http://localhost:8000/index.html`
+   * Landing Page: `http://localhost:8000/`
+   * App UI: `http://localhost:8000/app.html`
 
 ## Core System Development
 

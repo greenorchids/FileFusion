@@ -3,69 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Fusion</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>File Fusion - Fast and Secure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="landing-styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-left">
-            <span class="material-icons menu-icon">menu</span>
+    <div class="landing-container">
+        <div class="content-left">
             <div class="logo">
-                <span class="material-icons logo-icon">folder_shared</span>
+                <span class="material-icons logo-icon" style="color: #1a73e8; font-size: 36px; margin-right: 12px;">folder_shared</span>
                 <span class="logo-text">File Fusion</span>
             </div>
-        </div>
-        <div class="header-middle">
-            <div class="search-bar">
-                <span class="material-icons search-icon">search</span>
-                <input type="text" placeholder="Search files">
+
+            <h1 class="hero-title">Convert your files<br>with ease</h1>
+
+            <p class="hero-subtitle">
+                Fast, secure file conversion for all your needs. Seamlessly transform documents, data, and more directly in your browser.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="app.html" class="btn-primary">Get started</a>
+                <a href="#" class="btn-secondary">Learn more</a>
             </div>
         </div>
-        <div class="header-right">
-            <span class="material-icons">help_outline</span>
-            <span class="material-icons">settings</span>
-            <span class="material-icons">apps</span>
-            <div class="profile-pic">U</div>
+
+        <div class="content-right">
+            <div class="hero-image-wrapper">
+                <img src="mockup.png" alt="App UI Mockup" class="hero-image">
+            </div>
         </div>
-    </header>
-
-    <div class="main-container">
-        <aside class="sidebar">
-            <button class="new-btn">
-                <span class="material-icons">add</span>
-                New Conversion
-            </button>
-            <ul class="nav-links">
-                <li class="active"><span class="material-icons">inbox</span> Recent</li>
-                <li><span class="material-icons">star_border</span> Starred</li>
-                <li><span class="material-icons">schedule</span> Pending</li>
-                <li><span class="material-icons">done_all</span> Completed</li>
-            </ul>
-        </aside>
-
-        <main class="content">
-            <div class="upload-area">
-                <span class="material-icons upload-icon">cloud_upload</span>
-                <h2>Drag and drop files here</h2>
-                <p>Or click to select files for conversion</p>
-                <button class="browse-btn">Browse Files</button>
-            </div>
-
-            <div class="conversion-settings">
-                <h3>Conversion Settings</h3>
-                <div class="setting-group">
-                    <label>Target Format:</label>
-                    <select>
-                        <option>JSON</option>
-                        <option>CSV</option>
-                        <option>Markdown</option>
-                    </select>
-                </div>
-                <button class="convert-btn">Convert Now</button>
-            </div>
-        </main>
     </div>
 </body>
 </html>
