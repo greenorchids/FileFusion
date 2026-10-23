@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Source for ui/social-card.png and .github/social-preview.png (rendered by tools/social-card.mjs). -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100vw; height: 100vh; overflow: hidden; }
+    body {
+        font-family: 'Google Sans', Arial, sans-serif;
+        background: radial-gradient(circle at 85% 20%, #d3e3fd 0, transparent 45%),
+                    radial-gradient(circle at 10% 100%, #f3e8fd 0, transparent 40%), #ffffff;
+        display: flex;
+        align-items: center;
+        padding: 0 64px;
+        gap: 40px;
+    }
+    .left { flex: 0 0 52%; }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 30px; font-weight: 500; color: #3c4043; margin-bottom: 28px; }
+    .logo .material-icons { font-size: 44px; color: #1a73e8; }
+    h1 { font-size: 74px; line-height: 1.02; letter-spacing: -2px; color: #1f1f1f; margin-bottom: 24px; }
+    h1 span { color: #1a73e8; }
+    .sub { font-size: 26px; color: #5f6368; margin-bottom: 30px; line-height: 1.35; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chips span { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; background: #e6f4ea; color: #137333; font-size: 20px; font-weight: 500; }
+    .chips .material-icons { font-size: 22px; }
+    .right { flex: 1; position: relative; height: 100%; }
+    .shot {
+        position: absolute; top: 50%; left: 0; width: 760px; transform: translateY(-50%) rotate(-3deg);
+        border-radius: 18px; box-shadow: 0 24px 60px rgba(26, 115, 232, 0.25), 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+    }
+    .url { position: absolute; bottom: 26px; left: 64px; font-size: 20px; color: #80868b; }
+</style>
+</head>
+<body>
+    <div class="left">
+        <div class="logo"><span class="material-icons">folder_shared</span>File Fusion</div>
+        <h1>Convert any file<br>in <span>seconds</span>.</h1>
+        <p class="sub">Images, PDF, audio, CSV, JSON, SQL, Markdown and 100+ more. Right in your browser.</p>
+        <div class="chips">
+            <span><span class="material-icons">lock</span>No upload</span>
+            <span><span class="material-icons">money_off</span>Free</span>
+            <span><span class="material-icons">code</span>Open source</span>
+        </div>
+    </div>
+    <div class="right"><img class="shot" src="../ui/converter-screenshot.png" alt=""></div>
+    <div class="url">ybelov27.github.io/FileFusion</div>
+</body>
+</html>

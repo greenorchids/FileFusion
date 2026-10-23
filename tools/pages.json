@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "image-to-pdf",
+    "from": "Image",
+    "to": "PDF",
+    "icon": "picture_as_pdf"
+  },
+  {
+    "slug": "png-to-jpg",
+    "from": "PNG",
+    "to": "JPG",
+    "icon": "image"
+  },
+  {
+    "slug": "jpg-to-png",
+    "from": "JPG",
+    "to": "PNG",
+    "icon": "photo"
+  },
+  {
+    "slug": "webp-to-png",
+    "from": "WEBP",
+    "to": "PNG",
+    "icon": "photo"
+  },
+  {
+    "slug": "webp-to-jpg",
+    "from": "WEBP",
+    "to": "JPG",
+    "icon": "image"
+  },
+  {
+    "slug": "jpg-to-webp",
+    "from": "JPG",
+    "to": "WEBP",
+    "icon": "bolt"
+  },
+  {
+    "slug": "png-to-webp",
+    "from": "PNG",
+    "to": "WEBP",
+    "icon": "bolt"
+  },
+  {
+    "slug": "svg-to-png",
+    "from": "SVG",
+    "to": "PNG",
+    "icon": "gesture"
+  },
+  {
+    "slug": "png-to-ico",
+    "from": "PNG",
+    "to": "ICO",
+    "icon": "tab"
+  },
+  {
+    "slug": "image-to-base64",
+    "from": "Image",
+    "to": "Base64",
+    "icon": "data_object"
+  },
+  {
+    "slug": "mp3-to-wav",
+    "from": "MP3",
+    "to": "WAV",
+    "icon": "audiotrack"
+  },
+  {
+    "slug": "m4a-to-wav",
+    "from": "M4A",
+    "to": "WAV",
+    "icon": "graphic_eq"
+  },
+  {
+    "slug": "csv-to-json",
+    "from": "CSV",
+    "to": "JSON",
+    "icon": "data_object"
+  },
+  {
+    "slug": "json-to-csv",
+    "from": "JSON",
+    "to": "CSV",
+    "icon": "table_chart"
+  },
+  {
+    "slug": "csv-to-sql",
+    "from": "CSV",
+    "to": "SQL",
+    "icon": "storage"
+  },
+  {
+    "slug": "csv-to-markdown",
+    "from": "CSV",
+    "to": "Markdown",
+    "icon": "grid_on"
+  },
+  {
+    "slug": "json-to-yaml",
+    "from": "JSON",
+    "to": "YAML",
+    "icon": "settings_ethernet"
+  },
+  {
+    "slug": "xml-to-json",
+    "from": "XML",
+    "to": "JSON",
+    "icon": "account_tree"
+  },
+  {
+    "slug": "json-to-xml",
+    "from": "JSON",
+    "to": "XML",
+    "icon": "code"
+  },
+  {
+    "slug": "markdown-to-html",
+    "from": "Markdown",
+    "to": "HTML",
+    "icon": "article"
+  },
+  {
+    "slug": "html-to-markdown",
+    "from": "HTML",
+    "to": "Markdown",
+    "icon": "code"
+  },
+  {
+    "slug": "markdown-to-pdf",
+    "from": "Markdown",
+    "to": "PDF",
+    "icon": "picture_as_pdf"
+  },
+  {
+    "slug": "text-to-pdf",
+    "from": "Text",
+    "to": "PDF",
+    "icon": "description"
+  },
+  {
+    "slug": "html-to-text",
+    "from": "HTML",
+    "to": "Text",
+    "icon": "notes"
+  }
+]
