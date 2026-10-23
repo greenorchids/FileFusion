@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build pages
+        run: node tools/build-pages.mjs
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
