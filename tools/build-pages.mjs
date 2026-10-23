@@ -292,6 +292,18 @@ ${urls.map(([u, pr]) => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod
 </urlset>
 `);
 
+// Keep the generated pages out of git with an exact list (not a wildcard), so
+// hand-written pages with similar names are never ignored by accident.
+const GITIGNORE = path.join(UI, '..', '.gitignore');
+const BEGIN = '# BEGIN generated converter pages (tools/build-pages.mjs)';
+const END = '# END generated converter pages';
+const block = [BEGIN, ...pages.map((p) => `/ui/${p.slug}.html`), END].join('\n');
+const current = fs.existsSync(GITIGNORE) ? fs.readFileSync(GITIGNORE, 'utf8') : '';
+const start = current.indexOf(BEGIN), stop = current.indexOf(END);
+fs.writeFileSync(GITIGNORE, start >= 0 && stop > start
+    ? current.slice(0, start) + block + current.slice(stop + END.length)
+    : current.replace(/\n*$/, '\n\n') + block + '\n');
+
 // Machine-readable list for the landing page's "all converters" links.
 fs.writeFileSync(path.join(UI, '..', 'tools', 'pages.json'), JSON.stringify(pages.map(({ slug, from, to, icon }) => ({ slug, from, to, icon })), null, 2) + '\n');
 console.log(`wrote ${pages.length} pages and sitemap.xml`);

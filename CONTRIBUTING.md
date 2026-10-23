@@ -5,6 +5,7 @@ Thanks for helping! File Fusion is a static site: everything lives in `ui/` and 
 ## Run it locally
 
 ```bash
+node tools/build-pages.mjs   # generates the converter pages (not committed)
 cd ui && python3 -m http.server 8000
 ```
 
