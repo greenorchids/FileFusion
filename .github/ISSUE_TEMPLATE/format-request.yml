@@ -1,0 +1,24 @@
+name: Request a conversion format
+description: Ask for a new input or output format.
+title: "Format request: <from> to <to>"
+labels: ["format request", "enhancement"]
+body:
+  - type: input
+    id: from
+    attributes:
+      label: Convert from
+      placeholder: e.g. HEIC, DOCX, MP4
+    validations:
+      required: true
+  - type: input
+    id: to
+    attributes:
+      label: Convert to
+      placeholder: e.g. JPG, PDF, GIF
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What would you use it for?
+      description: Real use cases help us prioritize.

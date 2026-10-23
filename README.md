@@ -23,6 +23,18 @@
 
 ![File Fusion converter](ui/converter-screenshot.png)
 
+<p align="center">
+  <a href="https://ybelov27.github.io/FileFusion/"><b>Try it now</b></a> ·
+  <a href="https://github.com/ybelov27/FileFusion/issues/new?template=format-request.yml">Request a format</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
+
+> If File Fusion saved you a trip to an upload-everything converter, please **star the repo**. It's the main way other people find it.
+
+## Popular converters
+
+[Image → PDF](https://ybelov27.github.io/FileFusion/image-to-pdf.html) · [PNG → JPG](https://ybelov27.github.io/FileFusion/png-to-jpg.html) · [JPG → PNG](https://ybelov27.github.io/FileFusion/jpg-to-png.html) · [WEBP → PNG](https://ybelov27.github.io/FileFusion/webp-to-png.html) · [WEBP → JPG](https://ybelov27.github.io/FileFusion/webp-to-jpg.html) · [JPG → WEBP](https://ybelov27.github.io/FileFusion/jpg-to-webp.html) · [PNG → WEBP](https://ybelov27.github.io/FileFusion/png-to-webp.html) · [SVG → PNG](https://ybelov27.github.io/FileFusion/svg-to-png.html) · [PNG → ICO](https://ybelov27.github.io/FileFusion/png-to-ico.html) · [Image → Base64](https://ybelov27.github.io/FileFusion/image-to-base64.html) · [MP3 → WAV](https://ybelov27.github.io/FileFusion/mp3-to-wav.html) · [M4A → WAV](https://ybelov27.github.io/FileFusion/m4a-to-wav.html) · [CSV → JSON](https://ybelov27.github.io/FileFusion/csv-to-json.html) · [JSON → CSV](https://ybelov27.github.io/FileFusion/json-to-csv.html) · [CSV → SQL](https://ybelov27.github.io/FileFusion/csv-to-sql.html) · [CSV → Markdown](https://ybelov27.github.io/FileFusion/csv-to-markdown.html) · [JSON → YAML](https://ybelov27.github.io/FileFusion/json-to-yaml.html) · [XML → JSON](https://ybelov27.github.io/FileFusion/xml-to-json.html) · [JSON → XML](https://ybelov27.github.io/FileFusion/json-to-xml.html) · [Markdown → HTML](https://ybelov27.github.io/FileFusion/markdown-to-html.html) · [HTML → Markdown](https://ybelov27.github.io/FileFusion/html-to-markdown.html) · [Markdown → PDF](https://ybelov27.github.io/FileFusion/markdown-to-pdf.html) · [Text → PDF](https://ybelov27.github.io/FileFusion/text-to-pdf.html) · [HTML → Text](https://ybelov27.github.io/FileFusion/html-to-text.html)
+
 This repository contains the core logic for a modular file conversion system, named File Fusion.
 
 It also contains the web app in `ui/`: a landing page and a converter that runs entirely in the browser (images to PNG/JPG/WEBP/PDF/BMP/ICO/Base64, audio to WAV, CSV/TSV/JSON/JSON Lines/XML to JSON/CSV/TSV/JSON Lines/Markdown/HTML/YAML/XML/SQL, and Markdown/HTML/text to HTML/Markdown/text/PDF). It is deployed to GitHub Pages at https://ybelov27.github.io/FileFusion/.

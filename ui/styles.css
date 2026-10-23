@@ -602,6 +602,47 @@ body {
     margin-top: 2px;
 }
 
+.share-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #fef7e0;
+}
+
+.share-card > .material-icons {
+    color: #d93025;
+}
+
+.share-card > div:not(.share-actions) {
+    flex: 1;
+    min-width: 220px;
+}
+
+.share-card p {
+    font-size: 13px;
+    color: #444746;
+    margin-top: 2px;
+}
+
+.share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.share-actions a {
+    text-decoration: none;
+}
+
+.share-actions .gh-mark {
+    margin-right: 2px;
+}
+
 /* History */
 .history-head {
     display: flex;

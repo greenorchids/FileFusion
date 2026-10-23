@@ -110,6 +110,7 @@
         renderBulkOptions();
         $('drop-zone').classList.toggle('compact', queue.length > 0);
         $('signin-nudge').hidden = !(window.FFAuth.enabled && !window.FFAuth.user && queue.some((q) => q.status === 'done'));
+        $('share-card').hidden = shareDismissed || !queue.some((q) => q.status === 'done');
     }
 
     function renderItem(item) {
@@ -228,6 +229,17 @@
     $('menu-toggle').addEventListener('click', () => setSidebar(!document.body.classList.contains('sidebar-open')));
     $('scrim').addEventListener('click', () => setSidebar(false));
     document.querySelectorAll('.nav-links li').forEach((li) => li.addEventListener('click', () => showView(li.dataset.view)));
+
+    /* ---------- Sharing ---------- */
+
+    let shareDismissed = false;
+    try { shareDismissed = localStorage.getItem('ff_share_dismissed') === '1'; } catch { /* storage unavailable */ }
+    window.FFShare.wire(document);
+    $('share-dismiss').addEventListener('click', () => {
+        shareDismissed = true;
+        try { localStorage.setItem('ff_share_dismissed', '1'); } catch { /* storage unavailable */ }
+        renderQueue();
+    });
 
     /* ---------- Account ---------- */
 

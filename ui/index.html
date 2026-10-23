@@ -6,16 +6,24 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com/gsi/style; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.googleusercontent.com; connect-src 'self' https://api.github.com https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; object-src 'none'; base-uri 'none'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>File Fusion · Free, private file converter</title>
-    <meta name="description" content="Convert images to PDF, PNG to JPG, CSV to JSON, Markdown to HTML and more. Free, open source, and private: your files never leave your device.">
+    <meta name="description" content="Free online file converter that runs in your browser: image to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to HTML and 100+ more. No uploads, no sign-up, open source.">
     <meta property="og:title" content="File Fusion · Free, private file converter">
     <meta property="og:description" content="Convert files in seconds, right in your browser. No uploads, no sign-up, no watermarks.">
-    <meta property="og:image" content="https://ybelov27.github.io/FileFusion/converter-screenshot.png">
+    <link rel="canonical" href="https://ybelov27.github.io/FileFusion/">
+    <meta property="og:url" content="https://ybelov27.github.io/FileFusion/">
+    <meta property="og:image" content="https://ybelov27.github.io/FileFusion/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="File Fusion">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ybelov27.github.io/FileFusion/social-card.png">
+    <meta name="keywords" content="file converter, png to jpg, image to pdf, csv to json, mp3 to wav, json to csv, markdown to html, private, no upload, free, open source">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231a73e8' d='M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=20261022c">
+    <link rel="stylesheet" href="landing-styles.css?v=20261023a">
+    <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "File Fusion", "url": "https://ybelov27.github.io/FileFusion/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free, open-source file converter that runs entirely in your browser: images, PDF, audio, CSV, JSON, XML, SQL, Markdown and HTML.", "image": "https://ybelov27.github.io/FileFusion/social-card.png", "sameAs": ["https://github.com/ybelov27/FileFusion"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is File Fusion really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub."}}, {"@type": "Question", "name": "Are my files uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every conversion runs in your browser on your own device. Your files are never sent to a server."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device."}}, {"@type": "Question", "name": "Which formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP, PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS, FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV, JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text or PDF; HTML to text, Markdown or PDF; and plain text to HTML, Markdown or PDF."}}, {"@type": "Question", "name": "Can I convert many files at once?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Drop in as many files as you like and use \"Convert all\" to process the whole batch."}}]}]</script>
 </head>
 <body>
     <nav class="topnav">
@@ -86,23 +94,50 @@
         <h2 class="section-title">Popular conversions</h2>
         <p class="section-sub">Pick one to jump straight in, or drop any supported file into the converter.</p>
         <div class="format-grid">
-            <a class="format-card" href="app.html?to=pdf"><span class="material-icons">picture_as_pdf</span><strong>Image → PDF</strong><span>JPG, PNG, WEBP to PDF</span></a>
-            <a class="format-card" href="app.html?to=jpg"><span class="material-icons">image</span><strong>PNG → JPG</strong><span>Smaller files for sharing</span></a>
-            <a class="format-card" href="app.html?to=png"><span class="material-icons">photo</span><strong>WEBP → PNG</strong><span>Also JPG, GIF, SVG, BMP</span></a>
-            <a class="format-card" href="app.html?to=webp"><span class="material-icons">bolt</span><strong>JPG → WEBP</strong><span>Faster websites</span></a>
-            <a class="format-card" href="app.html?to=json"><span class="material-icons">data_object</span><strong>CSV → JSON</strong><span>Spreadsheets to APIs</span></a>
-            <a class="format-card" href="app.html?to=csv"><span class="material-icons">table_chart</span><strong>JSON → CSV</strong><span>Open in Excel or Sheets</span></a>
-            <a class="format-card" href="app.html?to=md"><span class="material-icons">grid_on</span><strong>CSV → Markdown</strong><span>Tables for READMEs</span></a>
-            <a class="format-card" href="app.html?to=yaml"><span class="material-icons">settings_ethernet</span><strong>JSON → YAML / XML</strong><span>Config &amp; data formats</span></a>
-            <a class="format-card" href="app.html?to=html"><span class="material-icons">article</span><strong>Markdown → HTML</strong><span>Ready-to-publish pages</span></a>
-            <a class="format-card" href="app.html?to=md"><span class="material-icons">code</span><strong>HTML → Markdown</strong><span>Clean up web content</span></a>
-            <a class="format-card" href="app.html?to=pdf"><span class="material-icons">description</span><strong>Text → PDF</strong><span>Print-ready documents</span></a>
-            <a class="format-card" href="app.html?to=txt"><span class="material-icons">notes</span><strong>HTML → Text</strong><span>Strip tags instantly</span></a>
-            <a class="format-card" href="app.html?to=wav"><span class="material-icons">audiotrack</span><strong>MP3 → WAV</strong><span>Also M4A, OGG, FLAC</span></a>
-            <a class="format-card" href="app.html?to=ico"><span class="material-icons">tab</span><strong>PNG → ICO</strong><span>Favicons for your site</span></a>
-            <a class="format-card" href="app.html?to=sql"><span class="material-icons">storage</span><strong>CSV → SQL</strong><span>CREATE TABLE + INSERTs</span></a>
-            <a class="format-card" href="app.html?to=json"><span class="material-icons">account_tree</span><strong>XML → JSON</strong><span>Also JSON Lines</span></a>
+            <a class="format-card" href="image-to-pdf.html"><span class="material-icons">picture_as_pdf</span><strong>Image → PDF</strong><span>JPG, PNG, WEBP to PDF</span></a>
+            <a class="format-card" href="png-to-jpg.html"><span class="material-icons">image</span><strong>PNG → JPG</strong><span>Smaller files for sharing</span></a>
+            <a class="format-card" href="webp-to-png.html"><span class="material-icons">photo</span><strong>WEBP → PNG</strong><span>Also JPG, GIF, SVG, BMP</span></a>
+            <a class="format-card" href="jpg-to-webp.html"><span class="material-icons">bolt</span><strong>JPG → WEBP</strong><span>Faster websites</span></a>
+            <a class="format-card" href="csv-to-json.html"><span class="material-icons">data_object</span><strong>CSV → JSON</strong><span>Spreadsheets to APIs</span></a>
+            <a class="format-card" href="json-to-csv.html"><span class="material-icons">table_chart</span><strong>JSON → CSV</strong><span>Open in Excel or Sheets</span></a>
+            <a class="format-card" href="csv-to-markdown.html"><span class="material-icons">grid_on</span><strong>CSV → Markdown</strong><span>Tables for READMEs</span></a>
+            <a class="format-card" href="json-to-yaml.html"><span class="material-icons">settings_ethernet</span><strong>JSON → YAML / XML</strong><span>Config &amp; data formats</span></a>
+            <a class="format-card" href="markdown-to-html.html"><span class="material-icons">article</span><strong>Markdown → HTML</strong><span>Ready-to-publish pages</span></a>
+            <a class="format-card" href="html-to-markdown.html"><span class="material-icons">code</span><strong>HTML → Markdown</strong><span>Clean up web content</span></a>
+            <a class="format-card" href="text-to-pdf.html"><span class="material-icons">description</span><strong>Text → PDF</strong><span>Print-ready documents</span></a>
+            <a class="format-card" href="html-to-text.html"><span class="material-icons">notes</span><strong>HTML → Text</strong><span>Strip tags instantly</span></a>
+            <a class="format-card" href="mp3-to-wav.html"><span class="material-icons">audiotrack</span><strong>MP3 → WAV</strong><span>Also M4A, OGG, FLAC</span></a>
+            <a class="format-card" href="png-to-ico.html"><span class="material-icons">tab</span><strong>PNG → ICO</strong><span>Favicons for your site</span></a>
+            <a class="format-card" href="csv-to-sql.html"><span class="material-icons">storage</span><strong>CSV → SQL</strong><span>CREATE TABLE + INSERTs</span></a>
+            <a class="format-card" href="xml-to-json.html"><span class="material-icons">account_tree</span><strong>XML → JSON</strong><span>Also JSON Lines</span></a>
         </div>
+        <h3 class="all-title">All converters</h3>
+        <nav class="all-converters" aria-label="All converters">
+            <a href="image-to-pdf.html">Image to PDF</a>
+            <a href="png-to-jpg.html">PNG to JPG</a>
+            <a href="jpg-to-png.html">JPG to PNG</a>
+            <a href="webp-to-png.html">WEBP to PNG</a>
+            <a href="webp-to-jpg.html">WEBP to JPG</a>
+            <a href="jpg-to-webp.html">JPG to WEBP</a>
+            <a href="png-to-webp.html">PNG to WEBP</a>
+            <a href="svg-to-png.html">SVG to PNG</a>
+            <a href="png-to-ico.html">PNG to ICO</a>
+            <a href="image-to-base64.html">Image to Base64</a>
+            <a href="mp3-to-wav.html">MP3 to WAV</a>
+            <a href="m4a-to-wav.html">M4A to WAV</a>
+            <a href="csv-to-json.html">CSV to JSON</a>
+            <a href="json-to-csv.html">JSON to CSV</a>
+            <a href="csv-to-sql.html">CSV to SQL</a>
+            <a href="csv-to-markdown.html">CSV to Markdown</a>
+            <a href="json-to-yaml.html">JSON to YAML</a>
+            <a href="xml-to-json.html">XML to JSON</a>
+            <a href="json-to-xml.html">JSON to XML</a>
+            <a href="markdown-to-html.html">Markdown to HTML</a>
+            <a href="html-to-markdown.html">HTML to Markdown</a>
+            <a href="markdown-to-pdf.html">Markdown to PDF</a>
+            <a href="text-to-pdf.html">Text to PDF</a>
+            <a href="html-to-text.html">HTML to Text</a>
+        </nav>
     </section>
 
     <section class="section alt" id="how">
@@ -113,7 +148,7 @@
             <div class="step"><span class="step-num">3</span><h3>Download</h3><p>Conversion happens instantly on your device. No upload, no queue, no email.</p></div>
         </div>
         <div class="hero-image-wrapper">
-            <img src="converter-screenshot.png?v=20261022c" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
+            <img src="converter-screenshot.png?v=20261023a" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
         </div>
     </section>
 
@@ -144,6 +179,15 @@
             <a href="app.html" class="btn-primary light">Start converting, free <span class="material-icons">arrow_forward</span></a>
             <a href="https://github.com/ybelov27/FileFusion" class="btn-ghost" target="_blank" rel="noopener"><svg class="gh-mark" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Star on GitHub</a>
         </div>
+        <div class="share-row" aria-label="Share File Fusion">
+            <span>Share:</span>
+            <a href="#" data-share="native"><span class="material-icons">ios_share</span> Share</a>
+            <a href="#" data-share="x">X / Twitter</a>
+            <a href="#" data-share="reddit">Reddit</a>
+            <a href="#" data-share="linkedin">LinkedIn</a>
+            <a href="#" data-share="hn">Hacker News</a>
+            <a href="#" data-share="copy"><span data-share-label>Copy link</span></a>
+        </div>
     </section>
 
     <footer class="footer">
@@ -154,9 +198,10 @@
         </span>
     </footer>
 
-    <script src="config.js?v=20261022c"></script>
-    <script src="auth.js?v=20261022c"></script>
-    <script src="handoff.js?v=20261022c"></script>
-    <script src="landing.js?v=20261022c"></script>
+    <script src="config.js?v=20261023a"></script>
+    <script src="auth.js?v=20261023a"></script>
+    <script src="handoff.js?v=20261023a"></script>
+    <script src="share.js?v=20261023a"></script>
+    <script src="landing.js?v=20261023a"></script>
 </body>
 </html>
