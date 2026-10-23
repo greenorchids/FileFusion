@@ -19,4 +19,29 @@ service-account*.json
 node_modules/
 .DS_Store
 
-*-to-*.html
+# BEGIN generated converter pages (tools/build-pages.mjs)
+/ui/image-to-pdf.html
+/ui/png-to-jpg.html
+/ui/jpg-to-png.html
+/ui/webp-to-png.html
+/ui/webp-to-jpg.html
+/ui/jpg-to-webp.html
+/ui/png-to-webp.html
+/ui/svg-to-png.html
+/ui/png-to-ico.html
+/ui/image-to-base64.html
+/ui/mp3-to-wav.html
+/ui/m4a-to-wav.html
+/ui/csv-to-json.html
+/ui/json-to-csv.html
+/ui/csv-to-sql.html
+/ui/csv-to-markdown.html
+/ui/json-to-yaml.html
+/ui/xml-to-json.html
+/ui/json-to-xml.html
+/ui/markdown-to-html.html
+/ui/html-to-markdown.html
+/ui/markdown-to-pdf.html
+/ui/text-to-pdf.html
+/ui/html-to-text.html
+# END generated converter pages
