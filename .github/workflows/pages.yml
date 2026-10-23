@@ -2,7 +2,7 @@ name: Deploy static UI to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "core-system-7411680520166854523"]
 
   workflow_dispatch:
 
@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: Build pages
         run: node tools/build-pages.mjs
