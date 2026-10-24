@@ -1,182 +1,443 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com/gsi/style; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.googleusercontent.com; connect-src 'self' https://api.github.com https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; object-src 'none'; base-uri 'none'; form-action 'none'">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="google-site-verification" content="TgO7mAOxSe4iG6SM6g88qWdAyoDNobDvjmK_BQcAOLQ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com/gsi/style; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.googleusercontent.com; connect-src 'self' https://api.github.com https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="google-site-verification"
+      content="TgO7mAOxSe4iG6SM6g88qWdAyoDNobDvjmK_BQcAOLQ"
+    />
     <title>File Fusion · Free, private file converter</title>
-    <meta name="description" content="Free online file converter that runs in your browser: image to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to HTML and 100+ more. No uploads, no sign-up, open source.">
-    <meta property="og:title" content="File Fusion · Free, private file converter">
-    <meta property="og:description" content="Convert files in seconds, right in your browser. No uploads, no sign-up, no watermarks.">
-    <link rel="canonical" href="https://ybelov27.github.io/FileFusion/">
-    <meta property="og:url" content="https://ybelov27.github.io/FileFusion/">
-    <meta property="og:image" content="https://ybelov27.github.io/FileFusion/social-card.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="File Fusion">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ybelov27.github.io/FileFusion/social-card.png">
-    <meta name="keywords" content="file converter, png to jpg, image to pdf, csv to json, mp3 to wav, json to csv, markdown to html, private, no upload, free, open source">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231a73e8' d='M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z'/></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=20261023a">
-    <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "File Fusion", "url": "https://ybelov27.github.io/FileFusion/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free, open-source file converter that runs entirely in your browser: images, PDF, audio, CSV, JSON, XML, SQL, Markdown and HTML.", "image": "https://ybelov27.github.io/FileFusion/social-card.png", "sameAs": ["https://github.com/ybelov27/FileFusion"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is File Fusion really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub."}}, {"@type": "Question", "name": "Are my files uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every conversion runs in your browser on your own device. Your files are never sent to a server."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device."}}, {"@type": "Question", "name": "Which formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP, PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS, FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV, JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text or PDF; HTML to text, Markdown or PDF; and plain text to HTML, Markdown or PDF."}}, {"@type": "Question", "name": "Can I convert many files at once?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Drop in as many files as you like and use \"Convert all\" to process the whole batch."}}]}]</script>
-</head>
-<body>
+    <meta
+      name="description"
+      content="Free online file converter that runs in your browser: image to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to HTML and 100+ more. No uploads, no sign-up, open source."
+    />
+    <meta
+      property="og:title"
+      content="File Fusion · Free, private file converter"
+    />
+    <meta
+      property="og:description"
+      content="Convert files in seconds, right in your browser. No uploads, no sign-up, no watermarks."
+    />
+    <link rel="canonical" href="https://ybelov27.github.io/FileFusion/" />
+    <meta property="og:url" content="https://ybelov27.github.io/FileFusion/" />
+    <meta
+      property="og:image"
+      content="https://ybelov27.github.io/FileFusion/social-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="File Fusion" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://ybelov27.github.io/FileFusion/social-card.png"
+    />
+    <meta
+      name="keywords"
+      content="file converter, png to jpg, image to pdf, csv to json, mp3 to wav, json to csv, markdown to html, private, no upload, free, open source"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231a73e8' d='M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z'/></svg>"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="landing-styles.css?v=20261023a" />
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "File Fusion",
+          "url": "https://ybelov27.github.io/FileFusion/",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any (web browser)",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Free, open-source file converter that runs entirely in your browser: images, PDF, audio, CSV, JSON, XML, SQL, Markdown and HTML.",
+          "image": "https://ybelov27.github.io/FileFusion/social-card.png",
+          "sameAs": ["https://github.com/ybelov27/FileFusion"]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is File Fusion really free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my files uploaded anywhere?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Every conversion runs in your browser on your own device. Your files are never sent to a server."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need an account?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which formats are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP, PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS, FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV, JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text or PDF; HTML to text, Markdown or PDF; and plain text to HTML, Markdown or PDF."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I convert many files at once?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Drop in as many files as you like and use \"Convert all\" to process the whole batch."
+              }
+            }
+          ]
+        }
+      ]
+    </script>
+  </head>
+  <body>
     <nav class="topnav">
-        <a class="logo" href="./">
-            <span class="material-icons logo-icon">folder_shared</span>
-            <span class="logo-text">File Fusion</span>
+      <a class="logo" href="./">
+        <span class="material-icons logo-icon">folder_shared</span>
+        <span class="logo-text">File Fusion</span>
+      </a>
+      <div class="nav-links">
+        <a href="#formats">Formats</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <div id="gsi-nav" class="gsi-slot" hidden></div>
+        <a
+          class="gh-star"
+          href="https://github.com/ybelov27/FileFusion"
+          target="_blank"
+          rel="noopener"
+          aria-label="Star File Fusion on GitHub"
+        >
+          <svg
+            class="gh-mark"
+            viewBox="0 0 16 16"
+            width="18"
+            height="18"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            /></svg
+          ><span>Star</span><span class="gh-count" data-gh-stars hidden></span>
         </a>
-        <div class="nav-links">
-            <a href="#formats">Formats</a>
-            <a href="#how">How it works</a>
-            <a href="#faq">FAQ</a>
-        </div>
-        <div class="nav-actions">
-            <div id="gsi-nav" class="gsi-slot" hidden></div>
-            <a class="gh-star" href="https://github.com/ybelov27/FileFusion" target="_blank" rel="noopener" aria-label="Star File Fusion on GitHub">
-                <svg class="gh-mark" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>Star</span><span class="gh-count" data-gh-stars hidden></span>
-            </a>
-            <span class="nav-user" id="nav-user" hidden></span>
-            <a href="app.html" class="btn-primary small">Open converter</a>
-        </div>
+        <span class="nav-user" id="nav-user" hidden></span>
+        <a href="app.html" class="btn-primary small">Open converter</a>
+      </div>
     </nav>
 
     <header class="hero">
-        <div class="content-left">
-            <div class="pill"><span class="material-icons">verified_user</span> 100% private · runs in your browser</div>
-            <h1 class="hero-title">Convert any file<br>in <span class="accent">seconds</span>.</h1>
-            <p class="hero-subtitle">
-                Images to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to HTML and more.
-                Free forever, no sign-up, no watermarks, and your files never leave your device.
-            </p>
+      <div class="content-left">
+        <div class="pill">
+          <span class="material-icons">verified_user</span> 100% private · runs
+          in your browser
+        </div>
+        <h1 class="hero-title">
+          Convert any file<br />in <span class="accent">seconds</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Images to PDF, PNG to JPG, MP3 to WAV, CSV to JSON or SQL, Markdown to
+          HTML and more. Free forever, no sign-up, no watermarks, and your files
+          never leave your device.
+        </p>
 
-            <div class="cta-buttons">
-                <a href="app.html" class="btn-primary">Convert a file, it's free <span class="material-icons">arrow_forward</span></a>
-                <div id="gsi-hero" class="gsi-slot" hidden></div>
-            </div>
-
-            <ul class="trust">
-                <li><span class="material-icons">check_circle</span> No account needed</li>
-                <li><span class="material-icons">check_circle</span> No upload limits or queues</li>
-                <li><span class="material-icons">check_circle</span> <a href="https://github.com/ybelov27/FileFusion" target="_blank" rel="noopener">Open source on GitHub</a></li>
-            </ul>
+        <div class="cta-buttons">
+          <a href="app.html" class="btn-primary"
+            >Convert a file, it's free
+            <span class="material-icons">arrow_forward</span></a
+          >
+          <div id="gsi-hero" class="gsi-slot" hidden></div>
         </div>
 
-        <div class="content-right">
-            <div class="drop-card" id="hero-drop" tabindex="0" role="button" aria-label="Choose files to convert">
-                <div class="drop-inner">
-                    <span class="material-icons drop-icon">cloud_upload</span>
-                    <h2>Drop files here to start</h2>
-                    <p>or <span class="link">choose files</span> · paste works too</p>
-                    <div class="chips small">
-                        <span>PNG</span><span>JPG</span><span>WEBP</span><span>PDF</span><span>ICO</span><span>MP3</span><span>WAV</span><span>CSV</span><span>JSON</span><span>XML</span><span>SQL</span><span>MD</span><span>HTML</span>
-                    </div>
-                </div>
-                <input type="file" id="hero-input" multiple hidden>
+        <ul class="trust">
+          <li>
+            <span class="material-icons">check_circle</span> No account needed
+          </li>
+          <li>
+            <span class="material-icons">check_circle</span> No upload limits or
+            queues
+          </li>
+          <li>
+            <span class="material-icons">check_circle</span>
+            <a
+              href="https://github.com/ybelov27/FileFusion"
+              target="_blank"
+              rel="noopener"
+              >Open source on GitHub</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="content-right">
+        <div
+          class="drop-card"
+          id="hero-drop"
+          tabindex="0"
+          role="button"
+          aria-label="Choose files to convert"
+        >
+          <div class="drop-inner">
+            <span class="material-icons drop-icon">cloud_upload</span>
+            <h2>Drop files here to start</h2>
+            <p>or <span class="link">choose files</span> · paste works too</p>
+            <div class="chips small">
+              <span>PNG</span><span>JPG</span><span>WEBP</span><span>PDF</span
+              ><span>ICO</span><span>MP3</span><span>WAV</span><span>CSV</span
+              ><span>JSON</span><span>XML</span><span>SQL</span><span>MD</span
+              ><span>HTML</span>
             </div>
-            <p class="drop-caption"><span class="material-icons">lock</span> Processed locally. Nothing is uploaded to any server.</p>
+          </div>
+          <input type="file" id="hero-input" multiple hidden />
         </div>
+        <p class="drop-caption">
+          <span class="material-icons">lock</span> Processed locally. Nothing is
+          uploaded to any server.
+        </p>
+      </div>
     </header>
 
     <section class="stats">
-        <div><strong>100+</strong><span>conversion pairs</span></div>
-        <div><strong>0 bytes</strong><span>uploaded to servers</span></div>
-        <div><strong>$0</strong><span>free, forever</span></div>
-        <div><strong>Batch</strong><span>convert many files at once</span></div>
+      <div><strong>100+</strong><span>conversion pairs</span></div>
+      <div><strong>0 bytes</strong><span>uploaded to servers</span></div>
+      <div><strong>$0</strong><span>free, forever</span></div>
+      <div><strong>Batch</strong><span>convert many files at once</span></div>
     </section>
 
     <section class="section" id="formats">
-        <h3 class="all-title">All converters</h3>
-        <nav class="all-converters" aria-label="All converters">
-            <a href="image-to-pdf.html">Image to PDF</a>
-            <a href="png-to-jpg.html">PNG to JPG</a>
-            <a href="jpg-to-png.html">JPG to PNG</a>
-            <a href="webp-to-png.html">WEBP to PNG</a>
-            <a href="webp-to-jpg.html">WEBP to JPG</a>
-            <a href="jpg-to-webp.html">JPG to WEBP</a>
-            <a href="png-to-webp.html">PNG to WEBP</a>
-            <a href="svg-to-png.html">SVG to PNG</a>
-            <a href="png-to-ico.html">PNG to ICO</a>
-            <a href="image-to-base64.html">Image to Base64</a>
-            <a href="mp3-to-wav.html">MP3 to WAV</a>
-            <a href="m4a-to-wav.html">M4A to WAV</a>
-            <a href="csv-to-json.html">CSV to JSON</a>
-            <a href="json-to-csv.html">JSON to CSV</a>
-            <a href="csv-to-sql.html">CSV to SQL</a>
-            <a href="csv-to-markdown.html">CSV to Markdown</a>
-            <a href="json-to-yaml.html">JSON to YAML</a>
-            <a href="xml-to-json.html">XML to JSON</a>
-            <a href="json-to-xml.html">JSON to XML</a>
-            <a href="markdown-to-html.html">Markdown to HTML</a>
-            <a href="html-to-markdown.html">HTML to Markdown</a>
-            <a href="markdown-to-pdf.html">Markdown to PDF</a>
-            <a href="text-to-pdf.html">Text to PDF</a>
-            <a href="html-to-text.html">HTML to Text</a>
-        </nav>
+      <h3 class="all-title">All converters</h3>
+      <nav class="all-converters" aria-label="All converters">
+        <a href="image-to-pdf.html">Image to PDF</a>
+        <a href="png-to-jpg.html">PNG to JPG</a>
+        <a href="jpg-to-png.html">JPG to PNG</a>
+        <a href="webp-to-png.html">WEBP to PNG</a>
+        <a href="webp-to-jpg.html">WEBP to JPG</a>
+        <a href="jpg-to-webp.html">JPG to WEBP</a>
+        <a href="png-to-webp.html">PNG to WEBP</a>
+        <a href="svg-to-png.html">SVG to PNG</a>
+        <a href="png-to-ico.html">PNG to ICO</a>
+        <a href="image-to-base64.html">Image to Base64</a>
+        <a href="mp3-to-wav.html">MP3 to WAV</a>
+        <a href="m4a-to-wav.html">M4A to WAV</a>
+        <a href="csv-to-json.html">CSV to JSON</a>
+        <a href="json-to-csv.html">JSON to CSV</a>
+        <a href="csv-to-sql.html">CSV to SQL</a>
+        <a href="csv-to-markdown.html">CSV to Markdown</a>
+        <a href="json-to-yaml.html">JSON to YAML</a>
+        <a href="xml-to-json.html">XML to JSON</a>
+        <a href="json-to-xml.html">JSON to XML</a>
+        <a href="markdown-to-html.html">Markdown to HTML</a>
+        <a href="html-to-markdown.html">HTML to Markdown</a>
+        <a href="markdown-to-pdf.html">Markdown to PDF</a>
+        <a href="text-to-pdf.html">Text to PDF</a>
+        <a href="html-to-text.html">HTML to Text</a>
+      </nav>
     </section>
 
     <section class="section alt" id="how">
-        <h2 class="section-title">Three steps. No waiting.</h2>
-        <div class="steps">
-            <div class="step"><span class="step-num">1</span><h3>Drop your files</h3><p>Drag in one file or a whole batch. Paste images straight from your clipboard.</p></div>
-            <div class="step"><span class="step-num">2</span><h3>Pick a format</h3><p>Choose a target per file, or convert everything to the same format at once.</p></div>
-            <div class="step"><span class="step-num">3</span><h3>Download</h3><p>Conversion happens instantly on your device. No upload, no queue, no email.</p></div>
+      <h2 class="section-title">Three steps. No waiting.</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Drop your files</h3>
+          <p>
+            Drag in one file or a whole batch. Paste images straight from your
+            clipboard.
+          </p>
         </div>
-        <div class="hero-image-wrapper">
-            <img src="converter-screenshot.png?v=20261023a" alt="The File Fusion converter" class="hero-image" loading="lazy" width="1200" height="800">
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Pick a format</h3>
+          <p>
+            Choose a target per file, or convert everything to the same format
+            at once.
+          </p>
         </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Download</h3>
+          <p>
+            Conversion happens instantly on your device. No upload, no queue, no
+            email.
+          </p>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img
+          src="converter-screenshot.png?v=20261023a"
+          alt="The File Fusion converter"
+          class="hero-image"
+          loading="lazy"
+          width="1200"
+          height="800"
+        />
+      </div>
     </section>
 
     <section class="section" id="why">
-        <h2 class="section-title">Why people switch to File Fusion</h2>
-        <div class="benefits">
-            <div class="benefit"><span class="material-icons">shield</span><h3>Private by design</h3><p>Other converters upload your files to their servers. File Fusion converts them in your browser, so sensitive documents stay with you.</p></div>
-            <div class="benefit"><span class="material-icons">speed</span><h3>Instant results</h3><p>No upload or download wait. Conversions finish as fast as your device can run them.</p></div>
-            <div class="benefit"><span class="material-icons">money_off</span><h3>Actually free</h3><p>No daily limits, no watermarks, no "pro" upsell. The code is open source on GitHub.</p></div>
+      <h2 class="section-title">Why people switch to File Fusion</h2>
+      <div class="benefits">
+        <div class="benefit">
+          <span class="material-icons">shield</span>
+          <h3>Private by design</h3>
+          <p>
+            Other converters upload your files to their servers. File Fusion
+            converts them in your browser, so sensitive documents stay with you.
+          </p>
         </div>
+        <div class="benefit">
+          <span class="material-icons">speed</span>
+          <h3>Instant results</h3>
+          <p>
+            No upload or download wait. Conversions finish as fast as your
+            device can run them.
+          </p>
+        </div>
+        <div class="benefit">
+          <span class="material-icons">money_off</span>
+          <h3>Actually free</h3>
+          <p>
+            No daily limits, no watermarks, no "pro" upsell. The code is open
+            source on GitHub.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="section alt" id="faq">
-        <h2 class="section-title">Frequently asked questions</h2>
-        <div class="faq">
-            <details open><summary>Is File Fusion really free?</summary><p>Yes. There are no limits, ads, or watermarks, and the source code is public on GitHub.</p></details>
-            <details><summary>Are my files uploaded anywhere?</summary><p>No. Every conversion runs in your browser on your own device. Your files are never sent to a server.</p></details>
-            <details><summary>Do I need an account?</summary><p>No. You can convert files right away. Signing in with Google is optional and keeps your conversion history separate per account on this device.</p></details>
-            <details><summary>Which formats are supported?</summary><p>Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP, PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS, FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV, JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text or PDF; HTML to text, Markdown or PDF; and plain text to HTML, Markdown or PDF.</p></details>
-            <details><summary>Can I convert many files at once?</summary><p>Yes. Drop in as many files as you like and use "Convert all" to process the whole batch.</p></details>
-        </div>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Is File Fusion really free?</summary>
+          <p>
+            Yes. There are no limits, ads, or watermarks, and the source code is
+            public on GitHub.
+          </p>
+        </details>
+        <details>
+          <summary>Are my files uploaded anywhere?</summary>
+          <p>
+            No. Every conversion runs in your browser on your own device. Your
+            files are never sent to a server.
+          </p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>
+            No. You can convert files right away. Signing in with Google is
+            optional and keeps your conversion history separate per account on
+            this device.
+          </p>
+        </details>
+        <details>
+          <summary>Which formats are supported?</summary>
+          <p>
+            Images (PNG, JPG, WEBP, GIF, SVG, BMP, AVIF, ICO) to PNG, JPG, WEBP,
+            PDF, BMP, ICO or a Base64 data URI; audio (MP3, M4A, AAC, OGG, OPUS,
+            FLAC) to WAV; CSV, TSV, JSON, JSON Lines and XML to JSON, CSV, TSV,
+            JSON Lines, Markdown, HTML, YAML, XML or SQL; Markdown to HTML, text
+            or PDF; HTML to text, Markdown or PDF; and plain text to HTML,
+            Markdown or PDF.
+          </p>
+        </details>
+        <details>
+          <summary>Can I convert many files at once?</summary>
+          <p>
+            Yes. Drop in as many files as you like and use "Convert all" to
+            process the whole batch.
+          </p>
+        </details>
+      </div>
     </section>
 
     <section class="final-cta">
-        <h2>Ready to convert?</h2>
-        <p>It takes less time than reading this sentence.</p>
-        <div class="final-actions">
-            <a href="app.html" class="btn-primary light">Start converting, free <span class="material-icons">arrow_forward</span></a>
-            <a href="https://github.com/ybelov27/FileFusion" class="btn-ghost" target="_blank" rel="noopener"><svg class="gh-mark" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Star on GitHub</a>
-        </div>
-        <div class="share-row" aria-label="Share File Fusion">
-            <span>Share:</span>
-            <a href="#" data-share="native"><span class="material-icons">ios_share</span> Share</a>
-            <a href="#" data-share="x">X / Twitter</a>
-            <a href="#" data-share="reddit">Reddit</a>
-            <a href="#" data-share="linkedin">LinkedIn</a>
-            <a href="#" data-share="hn">Hacker News</a>
-            <a href="#" data-share="copy"><span data-share-label>Copy link</span></a>
-        </div>
+      <h2>Ready to convert?</h2>
+      <p>It takes less time than reading this sentence.</p>
+      <div class="final-actions">
+        <a href="app.html" class="btn-primary light"
+          >Start converting, free
+          <span class="material-icons">arrow_forward</span></a
+        >
+        <a
+          href="https://github.com/ybelov27/FileFusion"
+          class="btn-ghost"
+          target="_blank"
+          rel="noopener"
+          ><svg
+            class="gh-mark"
+            viewBox="0 0 16 16"
+            width="18"
+            height="18"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+          Star on GitHub</a
+        >
+      </div>
+      <div class="share-row" aria-label="Share File Fusion">
+        <span>Share:</span>
+        <a href="#" data-share="native"
+          ><span class="material-icons">ios_share</span> Share</a
+        >
+        <a href="#" data-share="x">X / Twitter</a>
+        <a href="#" data-share="reddit">Reddit</a>
+        <a href="#" data-share="linkedin">LinkedIn</a>
+        <a href="#" data-share="hn">Hacker News</a>
+        <a href="#" data-share="copy"
+          ><span data-share-label>Copy link</span></a
+        >
+      </div>
     </section>
 
     <footer class="footer">
-        <span>© File Fusion · Open source file conversion</span>
-        <span class="footer-links">
-            <a href="privacy.html">Privacy</a>
-            <a href="https://github.com/ybelov27/FileFusion" target="_blank" rel="noopener">GitHub</a>
-        </span>
+      <span>© File Fusion · Open source file conversion</span>
+      <span class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a
+          href="https://github.com/ybelov27/FileFusion"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
+      </span>
     </footer>
 
     <script src="config.js?v=20261023a"></script>
@@ -184,5 +445,5 @@
     <script src="handoff.js?v=20261023a"></script>
     <script src="share.js?v=20261023a"></script>
     <script src="landing.js?v=20261023a"></script>
-</body>
+  </body>
 </html>

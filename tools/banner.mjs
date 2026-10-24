@@ -2,72 +2,147 @@
 // gradient tile and every box-drawing shadow character a crisp double line,
 // so the art looks the same in every font. Writes .github/banner-{light,dark}.svg.
 //   node tools/banner.mjs
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
-const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname), "..");
 const G = {
-    F: ['███████╗', '██╔════╝', '█████╗  ', '██╔══╝  ', '██║     ', '╚═╝     '],
-    I: ['██╗', '██║', '██║', '██║', '██║', '╚═╝'],
-    L: ['██╗     ', '██║     ', '██║     ', '██║     ', '███████╗', '╚══════╝'],
-    E: ['███████╗', '██╔════╝', '█████╗  ', '██╔══╝  ', '███████╗', '╚══════╝'],
-    U: ['██╗   ██╗', '██║   ██║', '██║   ██║', '██║   ██║', '╚██████╔╝', ' ╚═════╝ '],
-    S: ['███████╗', '██╔════╝', '███████╗', '╚════██║', '███████║', '╚══════╝'],
-    O: [' ██████╗ ', '██╔═══██╗', '██║   ██║', '██║   ██║', '╚██████╔╝', ' ╚═════╝ '],
-    N: ['███╗   ██╗', '████╗  ██║', '██╔██╗ ██║', '██║╚██╗██║', '██║ ╚████║', '╚═╝  ╚═══╝'],
-    ' ': Array(6).fill('   '),
+  F: ["███████╗", "██╔════╝", "█████╗  ", "██╔══╝  ", "██║     ", "╚═╝     "],
+  I: ["██╗", "██║", "██║", "██║", "██║", "╚═╝"],
+  L: ["██╗     ", "██║     ", "██║     ", "██║     ", "███████╗", "╚══════╝"],
+  E: ["███████╗", "██╔════╝", "█████╗  ", "██╔══╝  ", "███████╗", "╚══════╝"],
+  U: [
+    "██╗   ██╗",
+    "██║   ██║",
+    "██║   ██║",
+    "██║   ██║",
+    "╚██████╔╝",
+    " ╚═════╝ ",
+  ],
+  S: ["███████╗", "██╔════╝", "███████╗", "╚════██║", "███████║", "╚══════╝"],
+  O: [
+    " ██████╗ ",
+    "██╔═══██╗",
+    "██║   ██║",
+    "██║   ██║",
+    "╚██████╔╝",
+    " ╚═════╝ ",
+  ],
+  N: [
+    "███╗   ██╗",
+    "████╗  ██║",
+    "██╔██╗ ██║",
+    "██║╚██╗██║",
+    "██║ ╚████║",
+    "╚═╝  ╚═══╝",
+  ],
+  " ": Array(6).fill("   "),
 };
-const rows = Array.from({ length: 6 }, (_, r) => [...'FILE FUSION'].map((c) => G[c][r]).join(''));
+const rows = Array.from({ length: 6 }, (_, r) =>
+  [..."FILE FUSION"].map((c) => G[c][r]).join(""),
+);
 const cols = Math.max(...rows.map((r) => [...r].length));
 
-const CW = 12, CH = 22;              // cell size: terminal-like 1:~2 aspect
-const W = 980, PAD_TOP = 26;
+const CW = 12,
+  CH = 22; // cell size: terminal-like 1:~2 aspect
+const W = 980,
+  PAD_TOP = 26;
 const X0 = Math.round((W - cols * CW) / 2);
 const ARTH = rows.length * CH;
 const H = PAD_TOP + ARTH + 92;
-const GAP = 2.4, SW = 1.4;           // double-line spacing and stroke width
+const GAP = 2.4,
+  SW = 1.4; // double-line spacing and stroke width
 
 // Double box-drawing glyphs as two parallel strokes inside one cell.
 function boxPath(ch, x, y) {
-    const cx = x + CW / 2, cy = y + CH / 2, l = x, r = x + CW, t = y, b = y + CH;
-    const o = GAP, segs = {
-        '═': [[l, cy - o, r, cy - o], [l, cy + o, r, cy + o]],
-        '║': [[cx - o, t, cx - o, b], [cx + o, t, cx + o, b]],
-        '╗': [[l, cy - o, cx + o, cy - o, cx + o, b], [l, cy + o, cx - o, cy + o, cx - o, b]],
-        '╔': [[r, cy - o, cx - o, cy - o, cx - o, b], [r, cy + o, cx + o, cy + o, cx + o, b]],
-        '╝': [[cx + o, t, cx + o, cy + o, l, cy + o], [cx - o, t, cx - o, cy - o, l, cy - o]],
-        '╚': [[cx - o, t, cx - o, cy + o, r, cy + o], [cx + o, t, cx + o, cy - o, r, cy - o]],
+  const cx = x + CW / 2,
+    cy = y + CH / 2,
+    l = x,
+    r = x + CW,
+    t = y,
+    b = y + CH;
+  const o = GAP,
+    segs = {
+      "═": [
+        [l, cy - o, r, cy - o],
+        [l, cy + o, r, cy + o],
+      ],
+      "║": [
+        [cx - o, t, cx - o, b],
+        [cx + o, t, cx + o, b],
+      ],
+      "╗": [
+        [l, cy - o, cx + o, cy - o, cx + o, b],
+        [l, cy + o, cx - o, cy + o, cx - o, b],
+      ],
+      "╔": [
+        [r, cy - o, cx - o, cy - o, cx - o, b],
+        [r, cy + o, cx + o, cy + o, cx + o, b],
+      ],
+      "╝": [
+        [cx + o, t, cx + o, cy + o, l, cy + o],
+        [cx - o, t, cx - o, cy - o, l, cy - o],
+      ],
+      "╚": [
+        [cx - o, t, cx - o, cy + o, r, cy + o],
+        [cx + o, t, cx + o, cy - o, r, cy - o],
+      ],
     }[ch];
-    if (!segs) return '';
-    return segs.map((pts) => 'M' + pts.reduce((acc, v, i) => acc + (i % 2 ? ',' : i ? ' L' : '') + v.toFixed(1), '')).join(' ');
+  if (!segs) return "";
+  return segs
+    .map(
+      (pts) =>
+        "M" +
+        pts.reduce(
+          (acc, v, i) => acc + (i % 2 ? "," : i ? " L" : "") + v.toFixed(1),
+          "",
+        ),
+    )
+    .join(" ");
 }
 
-let blocks = '', lines = '';
+let blocks = "",
+  lines = "";
 rows.forEach((row, ri) => {
-    const chars = [...row], y = PAD_TOP + ri * CH;
-    for (let ci = 0; ci < chars.length; ci++) {
-        const ch = chars[ci];
-        if (ch === '█') {
-            // One rect per horizontal run of blocks, 1px taller than the row, so
-            // letters stay seamless when GitHub scales the image down.
-            let end = ci;
-            while (chars[end + 1] === '█') end++;
-            blocks += `<rect x="${X0 + ci * CW}" y="${y}" width="${(end - ci + 1) * CW}" height="${CH + 1}"/>`;
-            ci = end;
-        } else if (ch !== ' ') lines += boxPath(ch, X0 + ci * CW, y) + ' ';
-    }
+  const chars = [...row],
+    y = PAD_TOP + ri * CH;
+  for (let ci = 0; ci < chars.length; ci++) {
+    const ch = chars[ci];
+    if (ch === "█") {
+      // One rect per horizontal run of blocks, 1px taller than the row, so
+      // letters stay seamless when GitHub scales the image down.
+      let end = ci;
+      while (chars[end + 1] === "█") end++;
+      blocks += `<rect x="${X0 + ci * CW}" y="${y}" width="${(end - ci + 1) * CW}" height="${CH + 1}"/>`;
+      ci = end;
+    } else if (ch !== " ") lines += boxPath(ch, X0 + ci * CW, y) + " ";
+  }
 });
 
-const TAG = 'convert any file  ·  right in your browser  ·  free &amp; open source';
+const TAG =
+  "convert any file  ·  right in your browser  ·  free &amp; open source";
 const themes = {
-    // Light blue to blue only. Deeper on white for contrast, brighter on GitHub's dark background.
-    light: { stops: ['#5ab0ff', '#2b8cf0', '#1560d4'], shadow: '#93b9e6', sheen: 0.35, tag: '#5f6368', bar: 0.9 },
-    dark: { stops: ['#a5d8ff', '#5aaeff', '#2a7ef0'], shadow: '#3d6ea8', sheen: 0.28, tag: '#8b949e', bar: 1 },
+  // Light blue to blue only. Deeper on white for contrast, brighter on GitHub's dark background.
+  light: {
+    stops: ["#5ab0ff", "#2b8cf0", "#1560d4"],
+    shadow: "#93b9e6",
+    sheen: 0.35,
+    tag: "#5f6368",
+    bar: 0.9,
+  },
+  dark: {
+    stops: ["#a5d8ff", "#5aaeff", "#2a7ef0"],
+    shadow: "#3d6ea8",
+    sheen: 0.28,
+    tag: "#8b949e",
+    bar: 1,
+  },
 };
 
 function svg({ stops, shadow, sheen, tag, bar }) {
-    const artW = cols * CW, barY = PAD_TOP + ARTH + 22;
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t">
+  const artW = cols * CW,
+    barY = PAD_TOP + ARTH + 22;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t">
 <title id="t">File Fusion: convert any file, right in your browser, free and open source</title>
 <style>
   .shine { animation: sweep 6s ease-in-out infinite; }
@@ -103,6 +178,11 @@ function svg({ stops, shadow, sheen, tag, bar }) {
 }
 
 for (const [name, theme] of Object.entries(themes)) {
-    fs.writeFileSync(path.join(ROOT, '.github', `banner-${name}.svg`), svg(theme));
+  fs.writeFileSync(
+    path.join(ROOT, ".github", `banner-${name}.svg`),
+    svg(theme),
+  );
 }
-console.log(`wrote .github/banner-light.svg and .github/banner-dark.svg (${W}x${H})`);
+console.log(
+  `wrote .github/banner-light.svg and .github/banner-dark.svg (${W}x${H})`,
+);
