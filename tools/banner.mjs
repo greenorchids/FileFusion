@@ -44,12 +44,18 @@ function boxPath(ch, x, y) {
 
 let blocks = '', lines = '';
 rows.forEach((row, ri) => {
-    [...row].forEach((ch, ci) => {
-        const x = X0 + ci * CW, y = PAD_TOP + ri * CH;
-        // Tiles overlap by half a pixel so neighbouring blocks merge without seams.
-        if (ch === '█') blocks += `<rect x="${x}" y="${y}" width="${CW + 0.5}" height="${CH + 0.5}"/>`;
-        else if (ch !== ' ') lines += boxPath(ch, x, y) + ' ';
-    });
+    const chars = [...row], y = PAD_TOP + ri * CH;
+    for (let ci = 0; ci < chars.length; ci++) {
+        const ch = chars[ci];
+        if (ch === '█') {
+            // One rect per horizontal run of blocks, 1px taller than the row, so
+            // letters stay seamless when GitHub scales the image down.
+            let end = ci;
+            while (chars[end + 1] === '█') end++;
+            blocks += `<rect x="${X0 + ci * CW}" y="${y}" width="${(end - ci + 1) * CW}" height="${CH + 1}"/>`;
+            ci = end;
+        } else if (ch !== ' ') lines += boxPath(ch, X0 + ci * CW, y) + ' ';
+    }
 });
 
 const TAG = 'convert any file  ·  right in your browser  ·  free &amp; open source';
