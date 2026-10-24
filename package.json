@@ -12,6 +12,6 @@
     "typescript": "^7"
   },
   "dependencies": {
-    "magick-wasm": "^0.0.3"
+    "@imagemagick/magick-wasm": "^0.0.45"
   }
 }
