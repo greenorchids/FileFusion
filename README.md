@@ -1,14 +1,9 @@
-```text
-
-  ███████╗██╗██╗     ███████╗   ███████╗██╗   ██╗███████╗██╗ ██████╗ ███╗   ██╗
-  ██╔════╝██║██║     ██╔════╝   ██╔════╝██║   ██║██╔════╝██║██╔═══██╗████╗  ██║
-  █████╗  ██║██║     █████╗     █████╗  ██║   ██║███████╗██║██║   ██║██╔██╗ ██║
-  ██╔══╝  ██║██║     ██╔══╝     ██╔══╝  ██║   ██║╚════██║██║██║   ██║██║╚██╗██║
-  ██║     ██║███████╗███████╗   ██║     ╚██████╔╝███████║██║╚██████╔╝██║ ╚████║
-  ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-
-        convert any file  ·  right in your browser  ·  free & open source
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/banner-dark.svg">
+    <img src=".github/banner-light.svg" alt="File Fusion: convert any file, right in your browser, free and open source" width="100%">
+  </picture>
+</p>
 
 # File Fusion
 
