@@ -37,23 +37,26 @@ File Fusion is a static web app in `ui/`: a landing page and a converter that ru
 To run the web app locally, you can use Python's built-in HTTP server.
 
 1. Generate the converter pages (they are built during deployment and not committed):
+
    ```bash
    node tools/build-pages.mjs
    ```
 
 2. Navigate to the `ui` directory:
+
    ```bash
    cd ui
    ```
 
 3. Start a local web server:
+
    ```bash
    python -m http.server 8000
    ```
 
 4. Open your web browser and navigate to:
-   * Landing Page: `http://localhost:8000/`
-   * App UI: `http://localhost:8000/app.html`
+   - Landing Page: `http://localhost:8000/`
+   - App UI: `http://localhost:8000/app.html`
 
 ### Google sign-in
 
